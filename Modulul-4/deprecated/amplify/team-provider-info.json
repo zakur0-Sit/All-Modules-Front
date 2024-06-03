@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-shmsweb-dev-3072c-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267430447:role/amplify-shmsweb-dev-3072c-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267430447:role/amplify-shmsweb-dev-3072c-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-shmsweb-dev-3072c-deployment",
+      "UnauthRoleName": "amplify-shmsweb-dev-3072c-unauthRole",
+      "StackName": "amplify-shmsweb-dev-3072c",
+      "StackId": "arn:aws:cloudformation:eu-central-1:533267430447:stack/amplify-shmsweb-dev-3072c/74fbe690-1e4f-11ef-9cf1-0638f46663cd",
+      "AmplifyAppId": "dsss19vsnnu0z"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dsss19vsnnu0z",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
