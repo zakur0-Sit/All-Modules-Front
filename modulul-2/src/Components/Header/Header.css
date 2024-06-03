@@ -1,0 +1,267 @@
+.NotifContent {
+    margin-bottom: 2px;
+    overflow: auto;
+    max-height: 400px;
+}
+
+.EachNot {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.NotifHeader {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+.NotifHeader b{
+    color:white
+}
+
+
+.NotifHeader h5 {
+    padding-left: 13.5%;
+    color:white;
+}
+.NotifHeader button {
+    height: 60px;
+    color: black;
+    background-color: red;
+    border-radius: 6px;
+    margin: 0;
+    width: 70px;
+}
+
+.NotifHeader button:hover {
+    background-color: #be0909;
+}
+
+.NotifContent h3 {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.notification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Bell
+{
+    border:none;
+    margin: 5px 50px 0 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-image: url('../../../public/img/ico/NotificationsBell.png');
+    background-size: cover;
+    position: relative;
+    background-color: #F2F2F2;
+}
+.Bell:hover {
+    border-width: 2px;
+    border-radius: 20px;
+    background-color: #1BBC9B;
+}
+
+.NotifDropDown {
+    margin-top: 10px;
+    position: absolute; 
+    min-width: 350px;
+    max-height: 500px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    right: 9%;
+    border-radius: 5px 5px 5px 5px;
+}
+.EachNot h3{
+    color: white;
+}
+.EachNot:hover{
+    background-color: #1BBC9B;
+}
+
+nav
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F2F2F2;
+    color: #000;
+    width: 100%;
+    align-items: center;
+    height: 80px;
+}
+
+nav img
+{
+    margin-left: 100px;
+}
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.homeChores
+{
+    margin-top: 10px;
+}
+.homeChores>a
+{
+    color:#1BBC9B;
+}
+
+.aboutChores
+{
+    margin: 10px 50px 0 190px;
+}
+
+.contactChores
+{
+    margin: 10px 100px 0 0;
+}
+
+a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+.menuChores
+{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-image: url('../../../public/img/ico/Menu.png');
+    background-size: cover;
+    position: relative;
+    bottom: 2px;
+}
+
+.homeHideChores
+{
+    display: none;
+}
+
+nav button
+{
+    margin: 0 120px 0 40px;
+}
+
+nav button:hover
+{
+  background-color: #fff;
+  color: #1BBC9B;
+  border: 1px solid #1BBC9B;
+}
+
+.menuChores:hover
+{
+    background-image: url('../../../public/img/ico/Menu-hover.png');
+}
+
+.dropdownChores
+{
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.dropdownChores a
+{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.dropdownChores .contentChores
+{
+    right: 260px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 6;
+}
+
+.dropdownChores .accountHideChores {
+    display: none;
+}
+.dropdownChores:hover .contentChores
+{
+    display: block ;
+}
+
+.dropdownChores .contentChores a:hover
+{
+    background-color: #1BBC9B;
+}
+
+@media only screen and (max-width: 1500px)
+{
+    .aboutChores
+    {
+        margin: 10px 20px 0 20px;
+    }
+
+    .menuChores
+    {
+        margin: 0px 0 0 20px;
+    }
+}
+
+@media only screen and (max-width: 950px)
+{
+    .homeHideChores
+    {
+        display: block;
+    }
+    .homeChores{
+        display: none;
+    }
+    .aboutChores{
+        display: none;
+    }
+    .contactChores{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .regBtnChores {
+        display: none; 
+    }
+
+    .accountHideChores {
+        display: block; 
+    }
+
+    .menuChores {
+        margin-right: 20px;
+    }
+
+    .dropdownChores .contentChores { 
+        right: 0; 
+        width: 180px;
+    }
+
+    .dropdownChores .accountHideChores {
+        display: block; 
+    }
+
+    .regBtnChores {
+        display: none;
+    }
+}

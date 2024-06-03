@@ -1,0 +1,22 @@
+.topContainerChores{
+    position: relative;
+    width:100%;
+}
+.topContainerChores img{
+    z-index: -1;
+    width: 100%;
+    height:auto;
+    filter: brightness(50%);
+    background-color: rgba(0, 0, 0, 0.762);
+}
+.topContainerChores h2{
+  position: absolute;
+  display: block;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  z-index: 0;  
+  font-size: 6vw;  
+  color: #1BBC9B;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
