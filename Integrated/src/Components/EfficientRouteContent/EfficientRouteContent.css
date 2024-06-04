@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .generate-container select {
+    width: 100%;
+  }
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+}
+
+.title-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+}
+
+.title-image {
+  width: 100%;
+  display: block;
+  height: 300px;
+}
+
+.title {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 36px;
+}
+
+.title-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.generate-container {
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  margin: -150px auto 20px auto; /* Negative margin to overlap the title image */
+  padding: 20px;
+  max-width: 800px;
+  z-index: 100;
+  position: relative;
+}
+
+.generate-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.generate-header h2 {
+  margin-bottom: 10px;
+}
+
+.generate-content {
+  text-align: center;
+  color: rgb(123, 123, 123);
+  margin-bottom: 10px;
+}
+
+.generate-container select {
+  width: 30%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1BBC9B;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  transform: translateX(0%);
+}
+
+@media only screen and (max-width: 600px) {
+  .generate-container select {
+    width: 65%;
+  }
+}
+
+.generate-container select option {
+  background-color: #1BBC9B;
+  color: white;
+  font-size: 12px;
+  width: auto;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.container .mymap {
+  width: 80%;
+  height: 90vh;
+  margin: 20px auto 0 auto; /* Added top margin for spacing */
+  padding-top: 150px; /* Add padding-top to offset the negative margin */
+  z-index: 100;
+  position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+  .mymap {
+    width: 90%;
+    margin: 50px auto 0 auto; /* Ensure enough space for smaller screens */
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.back-button {
+  width: auto;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 99px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-bottom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.store-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.store-card {
+  border: 1px solid #ccc;
+  padding: 16px 16px;
+  margin: 0% 2%;
+  width: 250px;
+  margin-bottom: 20px;
+  justify-content: left;
+  border-radius: 10px;
+}
+
+.store-card-info {
+  height: 150px;
+  justify-content: center;
+}
+
+.locatie {
+  height: 15px;
+  width: 15px;
+  float: left;
+}
+
+.p1 {
+  margin-left: 20px;
+}
+
+.locatie img {
+  height: auto;
+  width: 100%;
+}
+
+.price {
+  padding-top: 3%;
+}
+
+.img-card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+.store-card-img {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 120px;
+  width: auto;
+}
+
+.store-card-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.details-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bottom-container {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 101;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.titlu {
+  text-align: center;
+  padding-bottom: 25px;
+  text-decoration: underline;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-gallery p {
+  margin-left: 20px;
+}
+
+.image-gallery img {
+  width: 250px;
+  height: 250px;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 30px;
+  display: flex;
+  box-sizing: border-box;
+  margin: 10px 10px;
+}
+
+.text-gallery p {
+  margin-bottom: 20px;
+}
+
+.details-button-container {
+  text-align: center;
+}
+
+.map-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.loading-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-controls button {
+  background-color: #1BBC9B;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.map-controls button:hover {
+  background-color: #63c1af;
+}
+
+.ButonAvg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0; 
+}
+
+.ButonAvg button {
+  background-color: #1BBC9B;
+  color: white;
+  padding: 5px 40px; 
+  border: none;
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 500px; 
+  text-align: center; 
+}
+
+.ButonAvg button:hover {
+  background-color: #63c1af;
+}
+
+
+@media screen and (max-width: 600px) {
+  .ButonAvg button {
+    min-width: auto; 
+    width: 75%;
+  }
+}
+

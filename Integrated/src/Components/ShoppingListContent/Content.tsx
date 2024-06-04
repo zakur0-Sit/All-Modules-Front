@@ -394,7 +394,7 @@ const Content: React.FC<ContentProps> = ({
           }
         </div>
         <div className="efficientroute">
-          <button className="bigButtons">Get Efficient Routes</button>
+        <a href="/#/efficient-route"><button className="bigButtons">Get Efficient Routes</button></a>
         </div>
       </div>
       <h1 className="listTitle">{products.shoppingLists[listIndex]?.listName}</h1>

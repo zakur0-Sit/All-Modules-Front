@@ -12,6 +12,8 @@ import { HouseholdManage } from './Pages/HouseholdManage';
 import ChoreListPage from './Pages/ChoreList';
 import InvetoryListPage from './Pages/InventoryList';
 import ShoppingListPage from './Pages/ShoppingList';
+import Shopping from './Components/Shopping/Shopping';
+import { EfficientRoute } from './Pages/EfficientRoute.jsx';
 
 export function App() {
   return (
@@ -29,7 +31,9 @@ export function App() {
           <Route path="/household-manage" element={<HouseholdManage />} />
           <Route path="/chores" element={<ChoreListPage />} />
           <Route path="/inventory" element={<InvetoryListPage />} />
-          <Route path="/shopping" element={<ShoppingListPage />} />
+          <Route path="/shopping-list" element={<ShoppingListPage />} />
+          <Route path="/shopping" element={<Shopping />} />
+          <Route path="/efficient-route" element={<EfficientRoute />} />
         </Routes>  
       </Router>    
     </HouseholdProvider>

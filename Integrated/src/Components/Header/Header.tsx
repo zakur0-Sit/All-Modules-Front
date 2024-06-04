@@ -89,7 +89,7 @@ export const Header = () => {
                                                     (notification.message.split(' ')[1] === 'chore' || notification.message.split(' ')[1] === 'chores') ? 
                                                     (<Link to='/chores'><h3 key={notification.id}>{notification.message}</h3></Link>) :
                                                     (notification.message.split(' ')[1] === 'shopping') ?
-                                                    (<Link to='/shopping'><h3 key={notification.id}>{notification.message}</h3></Link>) :
+                                                    (<Link to='/shopping-list'><h3 key={notification.id}>{notification.message}</h3></Link>) :
                                                     (notification.message.split(' ')[1] === 'inventory') ?
                                                     (<Link to='/inventory'><h3 key={notification.id}>{notification.message}</h3></Link>) :
                                                     <h3 key={notification.id}>{notification.message}</h3>
@@ -105,11 +105,11 @@ export const Header = () => {
                 <li className="dropdownChores">
                     <div className="menuChores"></div>
                     <div className="contentChores">
-                        <div className="homeHideChores"><a href="#">Home</a></div>
+                        <div className="homeHideChores"><a href="/">Home</a></div>
                         
                         <Link to="/">Recipe</Link>
                         <Link to="/">Meal Planning</Link>
-                        <Link to="/shopping">Shopping Lists</Link>
+                        <Link to="/shopping-list">Shopping Lists</Link>
                         <Link to="/inventory">Inventory</Link>
                         <Link to="/chores">Chores</Link>
                         <Link to="/">Household</Link>
