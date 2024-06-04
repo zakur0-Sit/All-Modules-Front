@@ -14,6 +14,9 @@ import InvetoryListPage from './Pages/InventoryList';
 import ShoppingListPage from './Pages/ShoppingList';
 import Shopping from './Components/Shopping/Shopping';
 import { EfficientRoute } from './Pages/EfficientRoute.jsx';
+import { Recipe } from './Pages/Recipe.jsx';
+import { Menu } from './Pages/Menu.jsx';
+import './App.css';
 
 export function App() {
   return (
@@ -34,6 +37,8 @@ export function App() {
           <Route path="/shopping-list" element={<ShoppingListPage />} />
           <Route path="/shopping" element={<Shopping />} />
           <Route path="/efficient-route" element={<EfficientRoute />} />
+          <Route path="/recipe" element={<Recipe />} />
+          <Route path="/menu" element={<Menu />} />
         </Routes>  
       </Router>    
     </HouseholdProvider>

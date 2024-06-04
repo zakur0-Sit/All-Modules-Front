@@ -94,7 +94,7 @@ export const Content = () =>
     };
 
     return (
-        <main>
+        <main className='account-main'>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">

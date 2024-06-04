@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
 }
 
-main {
+.home-main {
     display: block;
     overflow: hidden;
     height: auto;
@@ -27,7 +27,7 @@ main {
 
 .introductive .home-text {
     position: relative;
-    right: 270px;
+    left: 300px;
     bottom: 120px;
     margin-top: 400px;
     width: 100%;

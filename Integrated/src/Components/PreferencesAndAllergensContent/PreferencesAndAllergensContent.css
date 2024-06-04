@@ -1,3 +1,11 @@
+.pref-main
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .alergy-list, .shop-preference-list
 {
     display: flex;

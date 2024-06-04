@@ -462,8 +462,8 @@ export const EfficientRouteContent = () => {
                 ))}
             </div>
             )}
-            <div id="detailsModal" className="modal">
-                <div className="modal-content">
+            <div id="detailsModal" className="route-modal">
+                <div className="road-modal-content">
                     <span className="close" onClick={hideDetails}>&times;</span>
                     <div id="imageGallery" className="image-gallery">
                         {details.images.map((imageSrc, index) => (

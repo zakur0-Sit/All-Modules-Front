@@ -28,7 +28,7 @@ export const Content = () => {
     };
 
     return (
-        <main>
+        <main className='add-household-main'>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">

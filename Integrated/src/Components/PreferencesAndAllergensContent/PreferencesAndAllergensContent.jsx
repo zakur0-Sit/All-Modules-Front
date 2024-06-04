@@ -5,7 +5,7 @@ import { Button } from "../Button/Button";
 export function PreferencesAndAllergensContent() 
 {
     return (
-        <main>
+        <main className="pref-main">
             <div className="alergy-list">
                 <h2>List of Allergies</h2><br />
                 <div className="list">

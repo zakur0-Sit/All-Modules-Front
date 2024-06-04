@@ -3,7 +3,7 @@ import {Button} from "../Button/Button";
 
 export const Content = () => {
     return (
-        <main>
+        <main className="home-main">
             <div className="introductive">
                 <div className="introduct-image"></div>
                 <div className="home-text">

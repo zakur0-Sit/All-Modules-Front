@@ -63,7 +63,7 @@ export const Content = () => {
     };
 
     return (
-        <main>
+        <main className='household-main'>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">
@@ -106,7 +106,7 @@ export const Content = () => {
                                             style={{ width: '50px', height: '30px', fontSize: '10px', paddingTop: '5px', paddingLeft: '7px' }}
                                             onClick={handleAddMember}
                                         >
-                                            Send Invitation
+                                            Send
                                         </button>
                                         <button onClick={() => setActiveSection(null)} style={{ marginLeft: '10px' }}>Close</button>
                                     </div>

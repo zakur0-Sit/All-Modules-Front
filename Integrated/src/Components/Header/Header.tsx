@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Button} from '../Button/Button';
+import { Button } from '../Button/Button';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './Header.css';
 
@@ -107,12 +107,11 @@ export const Header = () => {
                     <div className="contentChores">
                         <div className="homeHideChores"><a href="/">Home</a></div>
                         
-                        <Link to="/">Recipe</Link>
-                        <Link to="/">Meal Planning</Link>
+                        <Link to="/recipe">Recipe</Link>
+                        <Link to="/menu">Meal Planning</Link>
                         <Link to="/shopping-list">Shopping Lists</Link>
                         <Link to="/inventory">Inventory</Link>
                         <Link to="/chores">Chores</Link>
-                        <Link to="/">Household</Link>
                         <Link to="/preferences">Preferences</Link>
 
                         <div className="accountHideChores"><a href="/account"><Button text={"Account"}/></a></div>
