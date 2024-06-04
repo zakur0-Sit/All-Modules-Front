@@ -57,7 +57,7 @@
   margin: -150px auto 20px auto; /* Negative margin to overlap the title image */
   padding: 20px;
   max-width: 800px;
-  z-index: 100;
+  z-index: 2;
   position: relative;
 }
 
