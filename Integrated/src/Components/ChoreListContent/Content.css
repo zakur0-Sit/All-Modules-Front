@@ -1,0 +1,838 @@
+@media (min-width: 950px) {
+.midsection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    
+}
+.historyButton{
+    border:none;
+    background-color: #1BBC9B;
+    color:white;
+    padding:10px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 5vh;
+}
+.historyButton:hover{
+    background-color: #42e9c7;
+}
+.chores_css{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5vw;
+}
+.chores_css img{
+    width: 20vw;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+.choreTile{
+    display: flex;
+    width:20vw;
+    height:auto;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.textStyleChores{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 10px;
+    width: 60%;
+    height: 100%;
+}
+.buttonContainerChores{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttonStyle{
+    border: none;
+    background-color: #f40a0a;
+    color: white;
+    font-size: 0.80vw;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    margin-top : 10px;
+    width:5vw;
+    min-width: fit-content;
+    
+}
+.buttonStyle:hover{
+    background-color: #be0909;
+    
+}
+
+.button2Style{
+    border: none;
+    background-color: #0079EB;
+    color: white;
+    font-size: 0.80vw;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    margin-top : 10px;
+    width:5vw;
+    min-width: fit-content;
+}
+.button2Style:hover{
+
+    background-color: #01539f;
+}
+.button3Style{
+    border: none;
+    background-color: #1BBC9B;
+    color: white;
+    font-size: 0.80vw;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    margin-top : 10px;
+    width:5vw;
+    min-width: fit-content;
+}
+.button3Style:hover{
+
+    background-color: #42e9c7;
+}
+
+.button4Style{
+    border: none;
+    background-color: #ffbb00;
+    color: white;
+    font-size: 0.80vw;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+    margin-top : 10px;
+    width:5vw;
+    min-width: fit-content;
+}
+.button4Style:hover{
+
+    background-color: #dfa300;
+}
+
+.details{
+    width:100%;
+}
+.textStyleChores h1{
+    font-size: 20px;
+    color: #181d4e;
+    overflow-wrap: break-word;
+    width:70%;
+}
+.textStyleChores h2{
+    font-size: 15px;
+    color: #181d4e;
+}
+
+.textStyleChores p{
+    font-size: 13px;
+    color: #000;
+    overflow-wrap: break-word;
+    width:70%;
+}
+
+.formStyleChores{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-bottom: 10vh;
+    margin-top: 8vh;
+
+
+}
+
+.formStyleChores button{
+
+    border:none;
+    background-color: #1BBC9B;
+    color:white;
+    padding:10px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    
+}
+.formStyleChores input{
+    margin-bottom: 15px;
+    width: 80%;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.formStyleChores button:hover{
+  background-color: #42e9c7;
+  
+}
+
+.editStyles{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+.editStyles input{
+    padding:5px;
+    border-radius: 10px;
+    width: 60%;
+}
+
+.historyContainer{
+    width:70vw;
+    height:auto;
+    margin: 2vw;
+    display:flex;
+    flex-direction: column;
+    background-color: #1bbc9c94;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.historyContainer h2{
+
+    color: White;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5vh;
+}
+.clearHistory{
+    border:none;
+    background-color: red;
+    color:white;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    margin-bottom: 5vh;
+}
+
+.clearHistory:hover{
+    background-color: #b81313;
+}
+
+.history_chores_css{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5vw;
+    margin:20px;
+}
+.hChoreTile img{
+    width: 15vw;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+.hChoreTile{
+    display: flex;
+    width:15vw;
+    height:auto;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hbottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background-color: white;
+    height: 100%;
+}
+.htextStyle{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 65%;
+}
+
+.htextStyle h3{
+    font-size: 13px;
+
+}
+.htextStyle p{
+    font-size: 13px;
+    overflow-wrap: break-word;
+
+}
+.addFromHistory{
+    border:none;
+    background-color: #1BBC9B;
+    color:white;
+    font-size: 1vw;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-width: fit-content;
+    margin-bottom: 10px;
+}
+.addFromHistory:hover{
+    background-color: #42e9c7;
+
+}
+.removeFromHistory{
+    border:none;
+    background-color: #ff1717;
+    color:white;
+    font-size: 1vw;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-width: fit-content;
+    margin-bottom: 10px;
+    
+}
+.removeFromHistory:hover{
+    background-color: #b81313;
+}
+.bottomConfirm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+.textStyleConfirm h1{
+    color:black;
+    font-size: 1.5vw;
+    margin: 10px;
+    text-align: center;
+}
+.buttonContainerConfirm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.buttonContainerConfirm button{
+    margin: 10px;
+}
+
+.buttonContainerConfirm >:first-child{
+    background-color: #1BBC9B;
+}
+
+.buttonContainerConfirm >:first-child:hover{
+    background-color: #42e9c7;
+}
+
+.clearHistoryButtons{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.clearHistoryButtons button{
+    margin: 10px;
+}
+.clearHistoryButtons > :first-child{
+    border:none;
+        background-color: #1BBC9B;;
+        color:white;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+
+}
+
+.clearHistoryButtons >:first-child:hover{
+    background-color: #42e9c7;
+}
+
+.clearHistoryButtons > :nth-child(2) {
+    border:none;
+    background-color: red;
+    color:white;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+  }
+
+  .clearHistoryButtons > :nth-child(2):hover{
+    background-color: #b81313;
+  }
+
+.confirmContainer h3{
+    color:white;
+}
+
+}
+
+@media (max-width: 950px ) and (min-width: 300px){
+    .midsection{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+        
+    }
+    .chores{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 5vw;
+    }
+    .chores img{
+        width: 100%;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+    }
+    
+    .choreTile{
+        display: flex;
+        width: 60vw;
+        height:auto;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        margin-top: 4vh;
+    }
+    .bottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .textStyleChores{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 2vw;
+        width:90%;
+    }
+    .buttonStyle{
+        border: none;
+        background-color: #FF1B1C;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 7px;
+        width: fit-content;
+        
+    }
+    .details{
+        width:70%;
+    }
+    .textStyleChores h1{
+        width: 80%;
+        color: #181d4e;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+    .textStyleChores h2{
+        color: #181d4e;
+        text-align: center;
+    }
+    
+    .textStyleChores p{
+        font-size: 3vw;
+        color: #000;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+    
+    .formStyleChores{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 50px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        margin-bottom: 10vh;
+        margin-top: 8vh;
+    
+    }
+    
+    .formStyleChores button{
+    
+        border:none;
+        background-color: #1BBC9B;
+        color:white;
+        padding:10px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 300;
+        margin-bottom: 10px;
+    
+        
+    }
+    .formStyleChores input{
+        margin-bottom: 15px;
+        width: 80%;
+        border-radius: 7px;
+        padding: 5px;
+        text-align: center;
+        
+    }
+    
+    .formStyleChores button:hover{
+      background-color: #42e9c7;
+      
+    }
+    .buttonContainerChores{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 70%;
+    }
+    .buttonStyle{
+        border: none;
+        background-color: #f40a0a;
+        color: white;
+        font-size: 2vw;
+        padding: 5px 10px;
+        border-radius: 7px;
+        margin-top : 10px;
+        min-width: fit-content;
+        
+    }
+    .buttonStyle:hover{
+        background-color: #be0909;
+        
+    }
+    
+    .button2Style{
+        border: none;
+        background-color: #0079EB;
+        color: white;
+        font-size: 2vw;
+        padding: 5px 10px;
+        border-radius: 7px;
+        margin-top : 10px;
+        min-width: fit-content;
+    }
+    .button2Style:hover{
+    
+        background-color: #01539f;
+    }
+    .button3Style{
+        border: none;
+        background-color: #1BBC9B;
+        color: white;
+        font-size:2vw;
+        padding: 5px 10px;
+        margin-top : 10px;
+        border-radius: 7px;
+        margin-bottom : 10px;
+        min-width: fit-content;
+    }
+    .button3Style:hover{
+    
+        background-color: #42e9c7;
+    }
+    
+    .button4Style{
+        border: none;
+        background-color: #ffbb00;
+        color: white;
+        font-size: 2vw;
+        padding: 5px 10px;
+        border-radius: 7px;
+        margin-top : 10px;
+        min-width: fit-content;
+    }
+    .button4Style:hover{
+    
+        background-color: #dfa300;
+    }
+    
+    .formStyleChores{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 50px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        margin-bottom: 10vh;
+        margin-top: 8vh;
+    
+    
+    }
+    
+    .formStyleChores button{
+    
+        border:none;
+        background-color: #1BBC9B;
+        color:white;
+        padding:10px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        margin-bottom: 10px;
+    
+        
+    }
+    .formStyleChores input{
+        margin-bottom: 15px;
+        width: 80%;
+        border-radius: 7px;
+        padding: 5px;
+    }
+    
+    .formStyleChores button:hover{
+      background-color: #42e9c7;
+      
+    }
+    
+    .editStyles{
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+    .editStyles input{
+        padding:5px;
+        border-radius: 10px;
+        width: 60%;
+    }
+    
+    .historyContainer{
+        width:70vw;
+        height:auto;
+        margin: 2vw;
+        display:flex;
+        flex-direction: column;
+        background-color: #1bbc9c94;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    .historyContainer h2{
+    
+        color: White;
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 5vh;
+    }
+    .clearHistory{
+        border:none;
+        background-color: red;
+        color:white;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        margin-bottom: 5vh;
+    
+    }
+    .clearHistory :hover{
+        background-color: #b81313;
+    }
+    
+    .history_chores_css{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 5vw;
+        margin:20px;
+    }
+    .hChoreTile img{
+        width: 30vw;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+    }
+    
+    .hChoreTile{
+        display: flex;
+        width:30vw;
+        height:auto;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hbottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        background-color: white;
+    }
+    .htextStyle{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 80%;
+    }
+    
+    .htextStyle h3{
+        font-size: 13px;
+    
+    }
+    .htextStyle p{
+        font-size: 13px;
+        overflow-wrap: break-word;
+    
+    }
+    
+    .historyButton{
+        border:none;
+        background-color: #1BBC9B;
+        color:white;
+        padding:10px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        margin-bottom: 5vh;
+    }
+    .historyButton:hover{
+        background-color: #42e9c7;
+    }
+    .addFromHistory{
+        border:none;
+        background-color: #1BBC9B;
+        color:white;
+        font-size: 1vw;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        min-width: fit-content;
+        margin-bottom: 10px;
+    }
+    .addFromHistory:hover{
+        background-color: #42e9c7;
+    
+    }
+    .removeFromHistory{
+        border:none;
+        background-color: #ff1717;
+        color:white;
+        font-size: 1vw;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        min-width: fit-content;
+        margin-bottom: 10px;
+        
+    }
+    .removeFromHistory:hover{
+        background-color: #b81313;
+    }
+
+    .bottomConfirm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+    }
+    .textStyleConfirm h1{
+        color:black;
+        font-size: 4vw;
+        margin: 10px;
+        text-align: center;
+    }
+    .buttonContainerConfirm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+    .buttonContainerConfirm button{
+        margin: 10px;
+        font-size:15px;
+    }
+    
+    .buttonContainerConfirm >:first-child{
+        background-color: #1BBC9B;
+    }
+    
+    .buttonContainerConfirm >:first-child:hover{
+        background-color: #42e9c7;
+    }
+    
+    .clearHistoryButtons{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .clearHistoryButtons button{
+        margin: 10px;
+    }
+    .clearHistoryButtons > :first-child{
+        border:none;
+        background-color: #1BBC9B;;
+        color:white;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+    
+    }
+    
+    .clearHistoryButtons >:first-child:hover{
+        background-color: #42e9c7;
+    }
+    
+    .clearHistoryButtons > :nth-child(2) {
+        border:none;
+        background-color: red;
+        color:white;
+        padding:7px;
+        border-radius: 5px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+      }
+    
+      .clearHistoryButtons > :nth-child(2):hover{
+        background-color: #b81313;
+      }
+    
+    .confirmContainer h3{
+        color:white;
+    }
+    }
+
+

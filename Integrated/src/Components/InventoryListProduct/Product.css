@@ -1,0 +1,534 @@
+@media (min-width: 700px) {
+.productInventory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+.productInfoInventory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .productImageInventory {
+    width: 10vw;  
+    height: 10vw; 
+    border-radius: 50;
+  }
+
+  .productNameInventory {
+    font-size: 1vw;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .itemName{
+    font-size: 2vw;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+
+  }
+  
+  .quantityControlsInventory {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantityButtonInventory {
+    background-color: #1BBC9B;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .removeButtonInventory {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+
+  .currentQuantityInventory {
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .productListInventory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+    margin: 100px;
+    gap: 20px; 
+    background-color: #F2F2F2;
+    position: relative;
+    margin-top: 150px; 
+  }
+  
+  .productContainerInventory {
+    background-color: #FFFFFF; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center;  
+    padding: 0px;
+    background-color: #F2F2F2;
+    border-radius: 15%;
+    width: 25vw;
+  }
+
+  .buyButtonInventory {
+    margin-top: 10px;
+    background-color: #1BBC9B;
+    font-weight: bold;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .editButton{
+    border: none;
+    background-color: #1BBC9B;
+    color: white;
+    font-size: 0.75vw;
+    padding: 5px 10px;
+    margin-top : 10px;
+    border-radius: 10px;
+    margin-bottom : 10px;
+    margin-right: 0.75vw;
+    min-width: fit-content;
+}
+.editButton:hover{
+
+    background-color: #42e9c7;
+}
+.inputStyle{
+  width:2vw;
+  margin: 0px 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.confirmInv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin:10px;
+}
+
+.confirmInv h3{
+  text-align: center;
+}
+.confirmButtonContainer{
+  display: flex;  
+  justify-content: center;
+}
+
+.confirmButtonContainer button{
+  margin: 0px 10px;
+}
+
+.confirmButtonContainer > :first-child {
+  border:none;
+  background-color: #1BBC9B;
+  color:white;
+  font-size: 1vw;
+  padding:7px;
+  border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-width: 4vw;
+
+}
+
+.confirmButtonContainer > :first-child:hover {
+  background-color: #42e9c7;
+}
+
+.confirmButtonContainer > :last-child {
+  border:none;
+  background-color: #ff1717;
+  color:white;
+  font-size: 1vw;
+  padding:7px;
+  border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-width: 4vw;
+  
+}
+
+.confirmButtonContainer > :last-child:hover {
+  background-color: #b81313;
+}
+
+}
+  
+@media (max-width: 700px) and (min-width: 450px) {
+  .productInventory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; 
+  }
+  
+  .productInfoInventory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+    
+    .productImageInventory {
+      width: 10vw;  
+      height: 10vw; 
+      border-radius: 50;
+    }
+  
+    .productNameInventory {
+      font-size: 2.5vw;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    .itemName{
+      font-size: 3vw;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 10px;
+
+    }
+    
+    .quantityControlsInventory  {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .quantityButtonInventory {
+      background-color: #1BBC9B;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 15px;
+    }
+  
+    .removeButtonInventory {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      margin-left: 10px;
+      font-size: 15px;
+
+    }
+  
+    .currentQuantityInventory {
+      margin: 0 10px;
+      font-size: 20px;
+      font-weight: normal;
+    }
+    
+    .productListInventory {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      align-items: center;
+      margin: 100px;
+      gap: 20px; 
+      background-color: #F2F2F2;
+      position: relative;
+      margin-top: 150px; 
+    }
+    
+    .productContainerInventory {
+      background-color: #FFFFFF; 
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;  
+      justify-content: center;  
+      padding: 0px;
+      background-color: #F2F2F2;
+      border-radius: 15%;
+      width: 40vw;
+    }
+  
+    .buyButtonInventory {
+      margin-top: 10px;
+      background-color: #1BBC9B;
+      font-weight: bold;
+      border-radius: 15px;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    .editButton{
+      border: none;
+      background-color: #1BBC9B;
+      color: white;
+      font-size: 1.5vw;
+      padding: 5px 10px;
+      margin-top : 10px;
+      border-radius: 10px;
+      margin-bottom : 10px;
+      margin-right: 0.75vw;
+      min-width: fit-content;
+  }
+  .editButton:hover{
+  
+      background-color: #42e9c7;
+  }
+  .inputStyle{
+    width:2vw;
+    margin: 0px 10px;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .confirmInv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:10px;
+  }
+  .confirmInv h3{
+    text-align: center;
+  }
+  .confirmButtonContainer{
+    display: flex;  
+    justify-content: center;
+  }
+  
+  .confirmButtonContainer button{
+    margin: 0px 10px;
+  }
+  
+  .confirmButtonContainer > :first-child {
+    border:none;
+    background-color: #1BBC9B;
+    color:white;
+    font-size: 3vw;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-width: 4vw;
+  
+  }
+  
+  .confirmButtonContainer > :first-child:hover {
+    background-color: #42e9c7;
+  }
+  
+  .confirmButtonContainer > :last-child {
+    border:none;
+    background-color: #ff1717;
+    color:white;
+    font-size: 3vw;
+    padding:7px;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-width: 4vw;
+    
+  }
+  
+  .confirmButtonContainer > :last-child:hover {
+    background-color: #b81313;
+  }
+  }
+
+  @media (max-width: 450px) and (min-width: 250px) {
+    .productInventory {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px; 
+    }
+    
+    .productInfoInventory {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+      
+      .productImageInventory {
+        width: 15vw;  
+        height: 15vw; 
+        border-radius: 50;
+      }
+    
+      .productNameInventory {
+        font-size: 3vw;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 10px;
+      }
+  
+      .itemName{
+        font-size: 6vw;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 10px;
+  
+      }
+      
+      .quantityControlsInventory  {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .quantityButtonInventory {
+        background-color: #1BBC9B;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 15px;
+      }
+    
+      .removeButtonInventory {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        margin-left: 10px;
+        font-size: 15px;
+      }
+    
+      .currentQuantityInventory {
+        margin: 0 10px;
+        font-size: 20px;
+        font-weight: normal;
+      }
+      
+      .productListInventory {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+        align-items: center;
+        margin: 100px;
+        gap: 20px; 
+        background-color: #F2F2F2;
+        position: relative;
+        margin-top: 150px; 
+      }
+      
+      .productContainerInventory {
+        background-color: #FFFFFF; 
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        justify-content: center;  
+        padding: 0px;
+        background-color: #F2F2F2;
+        border-radius: 15%;
+        width: 60vw;
+      }
+    
+      .buyButtonInventory {
+        margin-top: 10px;
+        background-color: #1BBC9B;
+        font-weight: bold;
+        border-radius: 15px;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      .editButton{
+        border: none;
+        background-color: #1BBC9B;
+        color: white;
+        font-size: 1.5vw;
+        padding: 5px 10px;
+        margin-top : 10px;
+        border-radius: 10px;
+        margin-bottom : 10px;
+        margin-right: 0.75vw;
+        min-width: fit-content;
+    }
+    .editButton:hover{
+    
+        background-color: #42e9c7;
+    }
+    .inputStyle{
+      width:2vw;
+      margin: 0px 10px;
+      border-radius: 10px;
+      padding: 5px;
+    }
+    .confirmInv{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin:10px;
+    }
+    .confirmInv h3{
+      text-align: center;
+    }
+    .confirmButtonContainer{
+      display: flex;  
+      justify-content: center;
+    }
+    
+    .confirmButtonContainer button{
+      margin: 0px 10px;
+    }
+    
+    .confirmButtonContainer > :first-child {
+      border:none;
+      background-color: #1BBC9B;
+      color:white;
+      font-size: 3vw;
+      padding:7px;
+      border-radius: 5px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      min-width: 4vw;
+    
+    }
+    
+    .confirmButtonContainer > :first-child:hover {
+      background-color: #42e9c7;
+    }
+    
+    .confirmButtonContainer > :last-child {
+      border:none;
+      background-color: #ff1717;
+      color:white;
+      font-size: 3vw;
+      padding:7px;
+      border-radius: 5px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      min-width: 4vw;
+      
+    }
+    
+    .confirmButtonContainer > :last-child:hover {
+      background-color: #b81313;
+    }
+
+    }
+
+  

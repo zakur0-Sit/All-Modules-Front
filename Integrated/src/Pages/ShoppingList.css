@@ -1,0 +1,373 @@
+*
+{
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+    text-align: center;
+  }
+  
+  .appContainerShopping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f2f2f2;
+  }
+  
+  .nav {
+    position: relative;
+    z-index: 10000;
+  }
+  
+  .AppLogo {
+    block-size: 40vmin;
+    pointer-events: none;
+  }
+  
+  .appImageShopping {
+    block-size: 20%;
+    inline-size: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vector {
+    position: absolute;
+    display: block;
+    top: 45%;
+    left: 50%;
+    width: 90vw;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  
+  /* .footerShopping {
+    block-size: 20%;
+    inline-size: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+  } */
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .AppHeader {
+    background-color: #282c34;
+    min-block-size: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .AppLink {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .appContainerShopping h1 {
+    color: #333;
+  }
+  
+  .paragraphShopping {
+    margin-block-start: 20px;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .topContainerShopping {
+    position: relative;
+    width: 100%;
+  }
+  
+  .buttonContainerShopping {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3vh;
+  }
+  
+  .buttonContainerShopping button {
+    border: none;
+    border-radius: 7px;
+    min-width: fit-content;
+    color: white;
+    background-color: #1bbc9b;
+    padding: 5px 10px;
+    width: 8vw;
+    font-size: 1.25vw;
+  }
+  
+  .buttonContainerShopping button:hover {
+    background-color: #36edc8;
+  }
+  
+  .tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tagDropdown {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+  }
+  
+  .tagDropdown button {
+    margin-top: 1vh;
+  }
+  
+  .sort {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sort button {
+    width: 10vw;
+  }
+  .sortDropdown {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+  }
+  
+  .sortDropdown button {
+    margin-top: 1vh;
+  }
+  
+  .restock {
+    height: 50px;
+  }
+  
+  .formStyleShopping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .shoppingList {
+    position: absolute;
+    display: block;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    font-size: 6vw;
+    color: #1bbc9b;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  
+  .itemListButtons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+  }
+  
+  .bigButtons {
+    border: none;
+    width: auto;
+    height: auto;
+    background-color: #1bbc9b;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+  }
+  .bigButtons button:hover {
+    background-color: #36edc8;
+  }
+  .listName {
+    background-color: #1bbc9b;
+    width: 80%;
+  }
+  
+  .existingListDropdown {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .existingListDropdown button {
+    display: flex;
+    border: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.5vw;
+    margin-top: 2vh;
+    height: 40px;
+  }
+  .newListPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .newListPrompt img {
+    width: 50%;
+    margin: 1vw;
+  }
+  .newListPrompt input {
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 7px;
+    width: 10vw;
+  }
+  
+  .addNewList {
+    border: none;
+    background-color: #1bbc9b;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1vw;
+    width: 5vw;
+    margin-bottom: 1vh;
+  }
+  
+  .deleteList {
+    width: 40px;
+    margin-left: 20px;
+    background-color: red;
+  }
+  .deleteList:hover {
+    background-color: rgb(155, 30, 30);
+  }
+  .listName:hover {
+    background-color: #36edc8;
+  }
+  .existingList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .existingList > button:hover {
+    background-color: #36edc8;
+  }
+  .newList{
+    display: flex;
+    flex-direction: column;
+  }
+  .newList button:hover {
+    background-color: #36edc8;
+  }
+  
+  .confirmListButtons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .listTitle {
+    text-align: center;
+    justify-self: center;
+    margin-top: 10vh;
+    font-size: 4vh;
+  }
+  
+  .confListPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .confListPrompt h3 {
+    text-align: center;
+    padding: 5px;
+  }
+  .listConfButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .listConfButton button {
+    background-color: #1bbc9b;
+    width: 4vw;
+    border-radius: 7px;
+    margin: 5px;
+    font-size: 2vh;
+  }
+  
+  .listConfButton > :last-child {
+    background-color: red;
+  }
+  .listConfButton > :last-child:hover {
+    background-color: rgb(155, 30, 30);
+  }
+  
+  .listConfButton > :first-child:hover {
+    background-color: #36edc8;
+  }
+  
+  /*pt pop-up de la notificare -- modul 4*/
+  .popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+    border-radius: 10px; 
+  }
+  
+  .popup p {
+    margin: 0 0 10px;
+  }
+  
+  .button-container {
+    text-align: center; 
+  }
+  
+  .popup button {
+    margin: 0 5px;
+    background-color: #1bbc9b;
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 15px;
+    cursor: pointer; 
+  }
+  
+  .popup button:focus {
+    outline: none;
+  }
+  
+  .popup button:hover {
+    background-color: #36edc8;
+  }
+  
+  /*pt buton care duce la efficient route -- modul 4*/
+  .efficientroute button:hover {
+    background-color: #36edc8;
+  }
