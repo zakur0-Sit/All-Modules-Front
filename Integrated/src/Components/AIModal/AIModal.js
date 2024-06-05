@@ -38,9 +38,9 @@ function AIModal({ onClose }) {
     };
 
     const handleSend = async () => {
-        const recipeName = recipeNameRef.current.value;
+        let recipeName = recipeNameRef.current.value;
         const mainIngredients = mainIngredientsRef.current.value;
-        const textInput = textInputRef.current.value;
+        let textInput = textInputRef.current.value;
 
         // Determine the recipe format
         const recipeFormat = textInput ? 'text' : 'youtube';
@@ -64,6 +64,11 @@ function AIModal({ onClose }) {
             setErrorMessage('Please enter a recipe name if you have entered main ingredients.');
             return;
         }
+
+        if(recipeFormat === 'youtube' && !recipeName.includes('recipe') )
+            recipeName = recipeName + ' recipe';
+        else if(recipeFormat === 'text' && !textInput.includes('recipe') )
+            textInput = textInput + ' recipe';
 
         setLoading(true);
         setIsBlurred(true);

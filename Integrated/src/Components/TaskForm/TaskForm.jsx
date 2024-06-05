@@ -58,7 +58,7 @@ const TaskForm = ({ setTasks, setParentLoading }) => {
   
     // Filter the list of all recipes based on the search term
     const filteredResults = allRecipes.filter(recipe =>
-      recipe.recipeTitle.toLowerCase().includes(term.toLowerCase())
+      recipe.recipeTitle.toLowerCase().includes(term.toLowerCase() && recipe.authorId !== 22 )
     );
   
     // Sort the filtered results based on the position of the search term in the title
