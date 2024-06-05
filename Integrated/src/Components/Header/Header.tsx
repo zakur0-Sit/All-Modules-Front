@@ -14,13 +14,13 @@ export const Header = () => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchNotifications = async () => {
             try {
                 const response = await fetch('http://localhost:9091/notifications');
-                /*if (!response.ok) {
+                if (!response.ok) {
                     throw new Error('Network response was not ok');
-                }*/
+                }
                 const data = await response.json();
 
                 if (Array.isArray(data.notificationList)) {
@@ -33,16 +33,17 @@ export const Header = () => {
                     throw new Error('Data format is incorrect');
                 }
             } catch (error: unknown) {
-                /*if (error instanceof Error) {
+                if (error instanceof Error) {
                     setError(error.message);
                 } else {
                     setError('An unknown error occurred');
-                }*/
+                }
             }
         };
 
         fetchNotifications();
     }, []);
+    */
 
     const handleNotif = () => {
         setNotif(!notif);
