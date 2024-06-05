@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../ChoreListContent/Content.css';
 import APIRequest from '../APIRequest/APIRequest';
+import { fetchImage } from '../../pexelsApi';
 
 export type ChoresList = {
   name : string | null;
   description: string;
   duration: string;
-  imageSrc: string | null;
 }
 
 export type ChoreProps = {
@@ -21,8 +21,7 @@ interface ChoreDeclareProps {
 const HistoryChore: React.FC<ChoresList & ChoreDeclareProps> = ({
 	name, 
 	description, 
-	duration,  
-	imageSrc, 
+	duration, 
 	addChore, 
 	handleClearHistoryChore
 }) => {
@@ -31,7 +30,20 @@ const HistoryChore: React.FC<ChoresList & ChoreDeclareProps> = ({
 			addChore(name, desc, duration, 0);
 	}
 
-	const [confirm, setConfirm] = useState(false)
+	const [confirm, setConfirm] = useState(false);
+	const [imageSrc, setImageSrc] = useState('');
+
+	useEffect (() => {
+		const fetchImageData = async () =>{
+			if(name){
+		  		const imageUrl = await fetchImage(name);
+		 		if(imageUrl)
+		  			setImageSrc(imageUrl);
+			}
+		}
+		if(name != '')
+		  fetchImageData();
+	  }, [name]);
 
 	const handleConfirm = () => {
 			setConfirm(!confirm);
@@ -41,7 +53,7 @@ const HistoryChore: React.FC<ChoresList & ChoreDeclareProps> = ({
 		<>
 			{imageSrc!== null && (
 				<>
-					<img src="img/ico/sweep.jpg" alt="" />
+					<img src={imageSrc} alt="" />
 					{confirm &&
 						<div className="hbottom">
 							<div className="htextStyle">

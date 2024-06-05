@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: flex-start;  
     background-color: #F2F2F2;
+    position: relative;
   }
   
   .nav {
@@ -93,9 +94,6 @@
     text-align: center;
   }
   
-  .appContainerInventory {
-    position: relative;  
-  }
   .topContainerInventory{
     position: relative;
     width:100%;
@@ -110,7 +108,11 @@
     z-index: 4;  
     font-size: 6vw;  
     color: #1BBC9B;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-text-stroke: 1px black;
+
+  }
+  .mainInventory {
+    display: block;
   }
   
   .nav {
@@ -193,6 +195,7 @@
   
   .sortDropdown button{
     margin-top: 1vh;
+    height: 100%;
   }
   
   /*adaugat de modul 4 pt butonul de restock*/
@@ -220,7 +223,7 @@
   @media screen and (max-width: 600px) {
     .restock button {
       min-width: auto; 
-      width: 75%;
+      width: 100%;
     }
   }
   

@@ -53,7 +53,7 @@ const ShoppingListPage: React.FC = () => {
   return (
     <div className="appContainerShopping">
       <Header />
-      <main>
+      <main className="mainShopping">
         {loading && <p className='paragraphShopping'>Shopping lists are loading...</p>}
         {fetchError && <p className='paragraphShopping' style={{ color: 'red' }}>{`Error: ${fetchError}`}</p>}
         {!loading && !fetchError && 

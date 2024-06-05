@@ -4,7 +4,7 @@ export const Top = () =>{
 
   return (
     <div className="topContainerChores">
-      <img src = "img/ico/inventory.png" alt =""></img>
+      <img src = "img/ico/broom.png" alt =""></img>
       <h2>Chores List</h2>
     </div>
   )

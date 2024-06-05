@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../ChoreListContent/Content.css';
 import APIRequest from '../APIRequest/APIRequest';
+import { fetchImage } from '../../pexelsApi';
+import ChoreList from '../ChoreLists/ChoreLists';
 
 export type ChoresList = {
   name : string | null;
   description: string;
   personID: number;
   duration: string;
-  imageSrc: string | null;
 }
 
 export type ChoreProps = {
@@ -38,7 +39,6 @@ const Chore: React.FC<ChoresList & ChoreDeclareProps> = ({
 	description, 
 	duration, 
 	personID, 
-	imageSrc, 
 	handleDone, 
 	handleSubmit, 
 	handleSubmitUpdate, 
@@ -62,6 +62,22 @@ const Chore: React.FC<ChoresList & ChoreDeclareProps> = ({
 	const inputRef3 = useRef<HTMLInputElement>(null);
 	const [edit, setEdit] = useState(true);
 	const [confirm, setConfirm] = useState(false);
+	const [imageSrc, setImageSrc] = useState('img/ico/broom.png');
+
+	useEffect (() => {
+		const fetchImageData = async () =>{
+			if(name){
+		  		const imageUrl = await fetchImage(name);
+		 		if(imageUrl)
+		  			setImageSrc(imageUrl);
+			}
+		}
+		if(name != '')
+		  fetchImageData();
+		else
+			setImageSrc('img/ico/broom.png');
+	  }, [name]);
+
 	let valoare;
 
 	const handleConfirm = () => {
@@ -96,7 +112,7 @@ const Chore: React.FC<ChoresList & ChoreDeclareProps> = ({
 
 	return (
 		<>
-			{imageSrc === null && (
+			{imageSrc === 'img/ico/broom.png' && (
 				<form className="formStyleChores" onSubmit={handleSubmit}>
 					<input
 						autoFocus
@@ -126,9 +142,9 @@ const Chore: React.FC<ChoresList & ChoreDeclareProps> = ({
 					<button type="submit" onClick={handleButton}>Add chore</button>
 				</form>
 			)}
-			{imageSrc!== null && (
+			{imageSrc!== 'img/ico/broom.png' && (
 				<>
-					<img src="img/ico/sweep.jpg" alt="" />
+					<img src={imageSrc} alt="" />
 					{edit && !confirm &&
 						<div className="bottom">
 							<div className="textStyleChores">

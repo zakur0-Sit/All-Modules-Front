@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Product.css';
 import { useRef } from 'react';
 import SearchBar from '../ShoppingListSearchBar/SearchBar';
+import { fetchImage } from '../../pexelsApi';
 
 type Quantity = {
   value: number;
@@ -16,7 +17,6 @@ export type ShoppingItem = {
   item: Item;
   quantity: Quantity;
   price: number;
-  imageSrc: string;
   id: any;
 }
 
@@ -45,8 +45,7 @@ interface ProductDeclareProps {
 
 
 const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
-  item, 
-  imageSrc, 
+  item,
   price, 
   quantity, 
   buyItem, 
@@ -64,6 +63,17 @@ const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const inputRef2 = useRef<HTMLInputElement>(null);
   const [confirmShop, setConfirmShop] = useState(false);
+  const [imageSrc, setImageSrc] = useState("img/ico/questionmark.png");
+
+  useEffect(() => {
+    const fetchImageData = async () =>{
+      const imageUrl = await fetchImage(item.name);
+      if(imageUrl)
+        setImageSrc(imageUrl);
+    }
+    if(item.name != '')
+      fetchImageData();
+  }, [item.name])
 
   const handleConfirmShop = () => {
       setConfirmShop(!confirmShop);

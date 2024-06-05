@@ -338,7 +338,7 @@ const Content: React.FC<ContentProps> = ({
         </div>
       )}
       <div className="topContainerShopping">
-        <img className="appImageShopping" src="img/ico/image 3.png" alt="Imagine 1" />
+        <img className="appImageShopping" src="img/ico/shoppingcart.png" alt="Imagine 1" />
         <div className="shoppingList">Shopping Lists</div>
       </div>
       <div className="itemListButtons">
@@ -398,7 +398,7 @@ const Content: React.FC<ContentProps> = ({
         </div>
       </div>
       <h1 className="listTitle">{products.shoppingLists[listIndex]?.listName}</h1>
-      <ItemLists
+      {products.shoppingLists.length > 0 && <ItemLists
         products={products}
         listIndex={listIndex}
         buyItem={buyItem}
@@ -409,7 +409,10 @@ const Content: React.FC<ContentProps> = ({
         setNewId={setNewId}
         setNewProduct={setNewProduct}
         setNewQuantity={setNewQuantity}
-      />
+      />}
+      {products.shoppingLists.length <= 0 && (
+        <h1 style={{textAlign: 'center'}}>Create a list!</h1>
+      )}
     </>
   );
 }

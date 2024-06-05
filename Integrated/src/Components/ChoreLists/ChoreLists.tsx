@@ -59,7 +59,6 @@ const ChoreList: React.FC<ContentProps> = ({
     <div className="midsection">
       <Chore
         name = {null}
-        imageSrc={null}
         description={"No details"}
         personID={-1}
         duration={"No deadline"}
@@ -95,7 +94,6 @@ const ChoreList: React.FC<ContentProps> = ({
               <div className="hChoreTile" key={index}>
                 <HistoryChore
                   name = {chore.name}
-                  imageSrc="img/ico/sweep.jpg"
                   description={chore.description}
                   duration={chore.duration}
                   addChore={addChore}
@@ -114,7 +112,6 @@ const ChoreList: React.FC<ContentProps> = ({
           <div className="choreTile" key={index}>
             <Chore
               name = {chore.name}
-              imageSrc="img/ico/sweep.jpg"
               description={chore.description}
               personID={chore.personID}
               duration={chore.duration}

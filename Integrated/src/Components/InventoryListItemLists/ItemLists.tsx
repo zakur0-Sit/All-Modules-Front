@@ -41,7 +41,6 @@ const ItemLists: React.FC<ContentProps> = ({
             setUpdatedQuantity={setUpdatedQuantity}
             quantity={item.quantity}
             averageConsumption={item.averageConsumption}
-            imageSrc="img/ico/product.png"
             handleChangeQuantity={handleChangeQuantity}
             handleIncreaseQuantity={handleIncreaseQuantity}
             handleDecreaseQuantity={handleDecreaseQuantity}
@@ -62,7 +61,6 @@ const ItemLists: React.FC<ContentProps> = ({
             "type": "Amount"
           }} 
           averageConsumption={0}
-          imageSrc="img/ico/questionmark.png"
           handleChangeQuantity={handleChangeQuantity}
           handleIncreaseQuantity={handleIncreaseQuantity}
           handleDecreaseQuantity={handleDecreaseQuantity}

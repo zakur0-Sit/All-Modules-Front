@@ -90,6 +90,7 @@
     margin-block-start: 20px;
     font-size: 18px;
     color: #666;
+    text-align: center;
   }
   
   .topContainerShopping {
@@ -170,8 +171,8 @@
     transform: translate(-50%, -50%);
     z-index: 4;
     font-size: 6vw;
-    color: #1bbc9b;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    color: #e5c3c3;
+    -webkit-text-stroke: 1px black;
   }
   
   .itemListButtons {
@@ -184,11 +185,10 @@
     border: none;
     width: auto;
     height: auto;
-    background-color: #1bbc9b;
+    background-color: #6ee6b3;
     color: white;
     padding: 10px;
     border-radius: 20px;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-weight: 300;
     font-size: 24px;
   }
@@ -196,7 +196,7 @@
     background-color: #36edc8;
   }
   .listName {
-    background-color: #1bbc9b;
+    background-color: #c397d2;
     width: 80%;
   }
   
@@ -213,11 +213,13 @@
     align-items: center;
     padding: 10px;
     border-radius: 20px;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-weight: 300;
     font-size: 1.5vw;
     margin-top: 2vh;
     height: 40px;
+  }
+  .mainShopping{
+    display:block
   }
   .newListPrompt {
     display: flex;
@@ -241,15 +243,18 @@
   
   .addNewList {
     border: none;
-    background-color: #1bbc9b;
+    background-color: #c397d2;
     color: white;
     padding: 10px;
     border-radius: 20px;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-weight: 300;
     font-size: 1vw;
     width: 5vw;
+    height: 40%;
     margin-bottom: 1vh;
+  }
+  .formStyleShopping>button:hover{
+    background-color: #aa6ac0;
   }
   
   .deleteList {
@@ -261,7 +266,7 @@
     background-color: rgb(155, 30, 30);
   }
   .listName:hover {
-    background-color: #36edc8;
+    background-color: #aa6ac0;
   }
   .existingList {
     display: flex;
@@ -370,4 +375,45 @@
   /*pt buton care duce la efficient route -- modul 4*/
   .efficientroute button:hover {
     background-color: #36edc8;
+  }
+  @media (max-width: 500px){
+    .bigButtons{
+      border: none;
+    width: auto;
+    height: auto;
+    background-color: #6ee6b3;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 300;
+    font-size: 14px;
+    }
+    .confListPrompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 25vw;
+      margin-top: 2vh;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+  }
+  @media (max-width: 700px) {
+    .confListPrompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 25vw;
+      margin-top: 2vh;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .listConfButton button {
+      background-color: #1bbc9b;
+      width: 35%;
+      border-radius: 7px;
+      margin: 5px;
+      font-size: 2vh;
+    }
   }

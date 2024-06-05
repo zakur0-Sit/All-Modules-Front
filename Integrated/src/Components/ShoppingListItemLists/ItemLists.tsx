@@ -34,7 +34,6 @@ const ItemLists: React.FC<ContentProps> = ({
         <div className="productContainerShopping" key={index}>
           <Product
             item={item.item}
-            imageSrc="img/ico/product.png"
             price={item.price}
             quantity={item.quantity}
             buyItem={buyItem}
@@ -54,7 +53,6 @@ const ItemLists: React.FC<ContentProps> = ({
             "value": 0,
             "type": "Amount"
           }}
-          imageSrc="img/ico/questionmark.png"
           price={0}
           handleIncreaseQuantity={handleIncreaseQuantity}
           handleDecreaseQuantity={handleDecreaseQuantity}
