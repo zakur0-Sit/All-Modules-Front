@@ -114,6 +114,7 @@ body.modal-open {
     border-radius: 15px;
     margin-left: 4%;
     margin-bottom: 4%;
+    
 }
 
 .text-box-right {
@@ -125,6 +126,10 @@ body.modal-open {
     border-radius: 15px;
     margin-right: 4%;
     margin-bottom: 4%;
+}
+
+.text-box-left ul {
+    list-style-position: inside;
 }
 
 
@@ -178,3 +183,17 @@ body.modal-open {
     background: #888; 
 }
 
+.save-recipe {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px; /* Adjust as needed */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Adjust as needed */
+    margin: 4px 2px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+  }

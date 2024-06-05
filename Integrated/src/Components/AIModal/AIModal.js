@@ -147,7 +147,7 @@ function AIModal({ onClose }) {
                 </div>
             </div>
 
-            {recipeModalOpen && <Modal recipe ={recipe} toggleModal={toggleModal}  />}
+            {recipeModalOpen && <Modal recipe ={recipe} toggleModal={toggleModal} AI={true}  />}
 
         </>
     );
