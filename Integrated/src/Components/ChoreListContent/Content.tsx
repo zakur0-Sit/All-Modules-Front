@@ -47,7 +47,7 @@ const Content: React.FC<ContentProps> = ({
   setFetchError
 }) =>{
 
-  const API_URL = 'http://localhost:8081/chores';
+  const API_URL = 'http://localhost:9091/chores';
 
   const saveChores = (newChores : ChoresList[]) => {
     setChores(prevChores => {

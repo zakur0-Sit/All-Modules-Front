@@ -72,7 +72,7 @@ export const EfficientRouteContent = () => {
     useEffect(() => {
         const fetchInitialLocation = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/updateLocation', {
+                const response = await fetch('http://localhost:9091/api/updateLocation', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -176,7 +176,7 @@ export const EfficientRouteContent = () => {
         }
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:8080/api/endpoint', {
+            const response = await fetch('http://localhost:9091/api/endpoint', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -257,7 +257,7 @@ export const EfficientRouteContent = () => {
     /*ver noua netestata fara request */
     const fetchData_consumption = async () => {
         try {
-            const response = await fetch('http://localhost:8080/inventory/infoItemRestock', {
+            const response = await fetch('http://localhost:9091/inventory/infoItemRestock', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -289,7 +289,7 @@ export const EfficientRouteContent = () => {
                         notification.onclick = (event) => {
                             event.preventDefault(); 
                             
-                            const targetUrl = `http://localhost:3000/ShoppingList?fromNotification=true&productId=${productId}&productName=${encodeURIComponent(productName)}`;
+                            const targetUrl = `http://localhost:3000/#/shopping-list?fromNotification=true&productId=${productId}&productName=${encodeURIComponent(productName)}`;
                             if (!window.location || window.location.href === 'http://localhost:3000/') {
                                 window.location.href = targetUrl;
                             } else {
@@ -478,11 +478,7 @@ export const EfficientRouteContent = () => {
                         <button className="back-button" onClick={hideDetails}>Back to Shopping List</button>
                     </div>
                 </div>
-            </div>
-            <div className="ButonAvg">
-                <button>Restock Suggestions</button>
-            </div>
-            
+            </div>            
         </div>
        
         </>

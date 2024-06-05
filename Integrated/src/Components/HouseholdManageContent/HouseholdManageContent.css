@@ -1,7 +1,7 @@
 *{
     color: #000;
 }
-.household-main  
+main 
 {
     width: 100%;
     display: flex;
@@ -480,12 +480,11 @@ h2 {
     border-top: 1px solid black;
 }
 .top-buttons{
+    background-color: white;
+    border: 1px solid black; /* Adaugă un chenar negru */
     padding: 10px; /* Adaugă un spațiu în interiorul chenarului */
     margin: 10px;
-    width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 sent-inv-button{
     width: 40px;

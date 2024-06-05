@@ -9,8 +9,8 @@ import Notifications from '../Components/Notifications/Notifications';
 
 const ChoreListPage: React.FC = () => {
   
-  const API_URL = 'http://localhost:8081/chores';
-  const API_URL_NOTIFICATIONS = 'http://localhost:8081/notifications';
+  const API_URL = 'http://localhost:9091/chores';
+  const API_URL_NOTIFICATIONS = 'http://localhost:9091/notifications';
 
   const [chores, setChores] = useState<ChoreProps>({ choresList: [] });
   const [choresHistory, setChoresHistory] = useState<ChoreProps>({ choresList: [] });

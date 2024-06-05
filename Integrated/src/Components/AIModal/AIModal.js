@@ -78,9 +78,9 @@ function AIModal({ onClose }) {
             let apiUrl;
 
             if (recipeFormat === 'text') {
-                apiUrl = `http://localhost:5000/api/v1/recipes/RecipeAI?recipeFormat=${encodeURIComponent(recipeFormat)}&input=${encodeURIComponent(textInput)}&mainIngredients=`;
+                apiUrl = `http://localhost:9091/api/v1/recipes/RecipeAI?recipeFormat=${encodeURIComponent(recipeFormat)}&input=${encodeURIComponent(textInput)}&mainIngredients=`;
             } else {
-                apiUrl = `http://localhost:5000/api/v1/recipes/RecipeAI?recipeFormat=${encodeURIComponent(recipeFormat)}&input=${encodeURIComponent(recipeName)}&mainIngredients=${encodeURIComponent(mainIngredients)}`;
+                apiUrl = `http://localhost:9091/api/v1/recipes/RecipeAI?recipeFormat=${encodeURIComponent(recipeFormat)}&input=${encodeURIComponent(recipeName)}&mainIngredients=${encodeURIComponent(mainIngredients)}`;
             }
             
             //console.log(apiUrl);

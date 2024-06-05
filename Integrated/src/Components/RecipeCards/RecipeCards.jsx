@@ -11,7 +11,7 @@ function RecipeCards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/v1/recipes/recipePage?pageNo=' + currentPage );
+        const response = await fetch('http://localhost:9091/api/v1/recipes/recipePage?pageNo=' + currentPage );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

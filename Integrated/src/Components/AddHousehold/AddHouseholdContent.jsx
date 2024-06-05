@@ -5,6 +5,7 @@ import './AddHouseholdContent.css';
 import { HouseholdContext } from '../../HouseholdContext';
 
 export const Content = () => {
+    const token = localStorage.getItem('jwtToken');
     const { addHousehold } = useContext(HouseholdContext);
     const [household, setHousehold] = useState({ 
         name: '', 
@@ -23,12 +24,29 @@ export const Content = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addHousehold(household);
-        navigate('/household');
+        //addHousehold(household);
+        fetch('http://localhost:9091/api/v1/household/add-house', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(household)
+        }).then(response => {
+            if (response.ok) {
+                console.log('Household added successfully');
+                navigate('/household');
+            } else {
+                throw new Error('Household not added!');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
     };
 
     return (
-        <main className='add-household-main'>
+        <main>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">

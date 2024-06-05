@@ -30,7 +30,7 @@ const SearchBar: React.FC<SearchProps> = ({
 	setNewQuantity 
 }) => {
 
-	const API_URL = 'http://localhost:8081/shopping';
+	const API_URL = 'http://localhost:9091/shopping';
 
 	const [filteredOptions, setFilteredOptions] = useState<Product[]>([]);
 	const [showDropdown, setShowDropdown] = useState(false);

@@ -33,7 +33,7 @@ const Content: React.FC<ContentProps> = ({
   const [isSort, setSort] = useState(false);
   const [updatedQuantity, setUpdatedQuantity] = useState(0);
 
-  const API_URL = 'http://localhost:8081/inventory';
+  const API_URL = 'http://localhost:9091/inventory';
 
   const saveProducts = (newProducts : ItemList[]) => {
     setProducts(prevProducts => {

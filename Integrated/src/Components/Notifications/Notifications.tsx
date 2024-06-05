@@ -15,7 +15,7 @@ const Notifications: React.FC = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await fetch('http://localhost:8081/notifications');
+        const response = await fetch('http://localhost:9091/notifications');
         /*if (!response.ok) {
           throw new Error('Network response was not ok');
         }*/

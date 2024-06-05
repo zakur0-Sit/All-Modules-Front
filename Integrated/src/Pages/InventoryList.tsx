@@ -8,8 +8,8 @@ import { Footer } from '../Components/Footer/Footer';
 
 const InventoryListPage: React.FC = () => {
 
-  const API_URL = 'http://localhost:8081/inventory';
-  const API_URL_NOTIFICATIONS = 'http://localhost:8081/notifications';
+  const API_URL = 'http://localhost:9091/inventory';
+  const API_URL_NOTIFICATIONS = 'http://localhost:9091/notifications';
 
   const [products, setProducts] = useState<ProductProps>({itemList: []});
   const [newId, setNewId] = useState(0);

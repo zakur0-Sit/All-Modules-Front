@@ -13,12 +13,17 @@ export const Content = () => {
     const navigate = useNavigate();
     const [role, setRole] = useState({});
     const [activeSection, setActiveSection] = useState(null);
-    const [newMemberName, setNewMemberName] = useState('');
-    const [users, setUsers] = useState([
+    const [newMemberEmail, setNewMemberEmail] = useState('');
+
+    const exampleUsers = [
         { id: 1, username: 'User1', role: 'parent', imgSrc: 'img/profile/user1.png' },
         { id: 2, username: 'User2', role: 'parent', imgSrc: 'img/profile/user1.png' },
         { id: 3, username: 'User3', role: 'child', imgSrc: 'img/profile/user1.png' },
-    ]);
+        { id: 4, username: 'User4', role: 'child', imgSrc: 'img/profile/user1.png' },
+        { id: 5, username: 'User5', role: 'child', imgSrc: 'img/profile/user1.png' },
+        { id: 6, username: 'User6', role: 'child', imgSrc: 'img/profile/user1.png' },
+        { id: 7, username: 'User7', role: 'child', imgSrc: 'img/profile/user1.png' }
+    ];
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -38,32 +43,19 @@ export const Content = () => {
     };
 
     const handleDeleteUser = (userId) => {
-        setUsers(users.filter(user => user.id !== userId));
+        console.log(`Delete user with ID: ${userId}`);
     };
 
     const handleManageRole = (userId, newRole) => {
         setRole(prevRole => ({ ...prevRole, [userId]: newRole }));
-        setUsers(users.map(user => user.id === userId ? { ...user, role: newRole } : user));
     };
 
     const handleSectionClick = (section) => {
         setActiveSection(prevSection => prevSection === section ? null : section);
     };
 
-    const handleAddMember = () => {
-        const newMember = {
-            id: users.length + 1,
-            username: newMemberName,
-            role: 'child',
-            imgSrc: 'img/profile/user1.png'
-        };
-        setUsers([...users, newMember]);
-        setNewMemberName('');
-        setActiveSection(null);
-    };
-
     return (
-        <main className='household-main'>
+        <main>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">
@@ -95,18 +87,10 @@ export const Content = () => {
                                 )}
                                 {activeSection === 'addMember' && (
                                     <div className="add-member">
-                                        <input 
-                                            type="text" 
-                                            placeholder="Enter name"
-                                            value={newMemberName}
-                                            onChange={(e) => setNewMemberName(e.target.value)}
-                                            style={{ width: '150px', height: '30px', fontSize: '1vw' }} 
-                                        />
-                                        <button 
-                                            style={{ width: '50px', height: '30px', fontSize: '10px', paddingTop: '5px', paddingLeft: '7px' }}
-                                            onClick={handleAddMember}
-                                        >
-                                            Send
+                                        <input type="text" placeholder="Enter name"
+                                            style={{ width: '100px', height: '30px', fontSize: '1vw' }} />
+                                        <button style={{ width: '50px', height: '30px', fontSize: '10px', paddingTop: '5px', paddingLeft: '7px' }}>
+                                            Send Invitation
                                         </button>
                                         <button onClick={() => setActiveSection(null)} style={{ marginLeft: '10px' }}>Close</button>
                                     </div>
@@ -145,7 +129,7 @@ export const Content = () => {
                             </div>
                             <div className="user-list">
                                 <h2>Users list:</h2>
-                                {users.map((user) => (
+                                {exampleUsers.map((user) => (
                                     <div key={user.id} className="user-item">
                                         <img className='user-img' src={user.imgSrc} alt={`${user.username}-img`} />
                                         <p className='user-name'>{user.username}</p>

@@ -358,30 +358,6 @@ body {
   background-color: #63c1af;
 }
 
-.ButonAvg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0; 
-}
-
-.ButonAvg button {
-  background-color: #1BBC9B;
-  color: white;
-  padding: 5px 40px; 
-  border: none;
-  border-radius: 5px;
-  font-size: 18px; 
-  cursor: pointer;
-  transition: background-color 0.3s;
-  min-width: 500px; 
-  text-align: center; 
-}
-
-.ButonAvg button:hover {
-  background-color: #63c1af;
-}
-
 
 @media screen and (max-width: 600px) {
   .ButonAvg button {

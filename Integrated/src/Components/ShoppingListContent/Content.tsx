@@ -29,7 +29,7 @@ const Content: React.FC<ContentProps> = ({
   setFetchError
 }) => {
  
-  const API_URL = 'http://localhost:8081/shopping';
+  const API_URL = 'http://localhost:9091/shopping';
 
   const [slist, setSlist] = useState(false);
   const [nlist, setNlist] = useState(false);

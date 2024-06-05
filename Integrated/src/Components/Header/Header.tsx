@@ -17,7 +17,7 @@ export const Header = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await fetch('http://localhost:8081/notifications');
+                const response = await fetch('http://localhost:9091/notifications');
                 /*if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }*/
@@ -54,7 +54,7 @@ export const Header = () => {
 
     const clearNotifications = async () => {
         try {
-            const response = await fetch('http://localhost:8081/notifications/clearNotifications', {
+            const response = await fetch('http://localhost:9091/notifications/clearNotifications', {
                 method: 'DELETE'
             });
             if (!response.ok) throw Error('Notifications could not be cleared');
