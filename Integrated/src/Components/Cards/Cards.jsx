@@ -1,22 +1,33 @@
+// src/components/Cards.jsx
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
-import Modal from '../Modal/modal.js';
-import {fetchImage} from '../../pexelsApi.tsx';
+import Modal from '../Modal/modal';
+import { fetchImage} from "../../pexelsApiFetch";
 
 
-function Cards({ recipe }) {
+function Cards({ recipe, handleLike, handleDislike }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
+  const [liked, setLiked] = useState(false);
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const handleLikeClick = () => {
+    if (liked) {
+      handleDislike(recipe.recipeId);
+    } else {
+      handleLike(recipe.recipeId);
+    }
+    setLiked(!liked);
   };
 
   useEffect(() => {
     if (recipe.imageList && recipe.imageList.length > 0) {
       setImageSrc(recipe.imageList[0]);
     } else {
-      fetchImage(recipe.recipeTitle.includes("recipe") ? recipe.recipeTitle : recipe.recipeTitle + 'recipe')
+      fetchImage(recipe.recipeTitle.includes("recipe") ? recipe.recipeTitle : recipe.recipeTitle + ' recipe')
         .then((url) => {
           setImageSrc(url);
         });
@@ -31,17 +42,17 @@ function Cards({ recipe }) {
     }
   }, [modalOpen]);
 
-  
-
-
-  return(
+  return (
     <div className="card">
-      <img src={imageSrc} alt={recipe.recipeTitle} className="card-img"/>
+      <img src={imageSrc} alt={recipe.recipeTitle} className="card-img" />
       <div className="card-body">
         <h5 className="card-title">{recipe.recipeTitle}</h5>
         <button className="btn btn-primary" onClick={toggleModal}>Details</button>
+        <button className={`like-button ${liked ? 'liked' : ''}`} onClick={handleLikeClick}>
+          {liked ? 'Liked' : 'Like'}
+        </button>
       </div>
-      {modalOpen && <Modal recipe={recipe} toggleModal={toggleModal} img ={imageSrc} />}
+      {modalOpen && <Modal recipe={recipe} toggleModal={toggleModal} img={imageSrc} />}
     </div>
   );
 }
