@@ -43,7 +43,8 @@ const TaskColumn = ({ title, tasks, status, handleDelete, setActiveCard, onDrop,
   return (
     <section className='task_column'>
       <h2 className='task_column_heading'>
-        {title} - Nutrient Totals
+        {title === "Luni" ? "Monday" : title === "Marti" ? "Tuesday" : title === "Miercuri" ? "Wednesday" : title === "Joi" ? "Thursday" : title === "Vineri" ? "Friday" : title === "Sambata" ? "Saturday" : "Sunday"
+        } - Nutrient Totals
       </h2>
       <div className='nutrient_info'>
         <p>Calories: {columnNutrients.calories.toFixed(2)}</p>

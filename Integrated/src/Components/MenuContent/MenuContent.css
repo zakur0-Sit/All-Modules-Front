@@ -4,9 +4,10 @@
     background-position: center;
     min-height: 100vh;
     padding-top: 50px;
+    box-sizing: border-box;
 }
 
-.loading-overlay {
+.menu-layout .loading-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,56 +21,69 @@
     backdrop-filter: blur(10px);
 }
 
-.animation-container {
+.menu-layout .animation-container {
     width: 400px; /* Increase the size */
     height: 400px;
 }
 
-.blur-background {
+.menu-layout .blur-background {
     filter: blur(5px);
 }
 
-.app_main {
+.menu-layout .app_main {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap; /* Ensure columns wrap on smaller screens */
-    gap: 10px;
-    justify-content: space-around;
-}
-
-.task_column {
-    flex: 1 1 calc(100% / 7); /* Each column takes 1/7th of the available width */
+    gap: 2px; /* Decrease the gap between elements */
+    justify-content:space-around; /* Align elements to the start of the container */
+    align-items: flex-start;
+    padding: 20px 80px;
     box-sizing: border-box;
 }
 
+.menu-layout .task_column {
+    height: auto;
+    max-width: 20%; /* Each column can take up to 20% of the available width */
+    min-width: 250px;
+    flex: 1 1 calc(100% / 4); /* Each column takes 1/4th of the available width */
+    box-sizing: border-box;
+    margin: 50px 0
+   
+}
+
 @media (max-width: 1200px) {
-    .task_column {
-        flex: 1 1 calc(100% / 5); /* 5 columns per row on medium screens */
+    .menu-layout .task_column {
+        flex: 1 1 calc(100% / 3); /* 5 columns per row on medium screens */
     }
 }
 
 @media (max-width: 992px) {
-    .task_column {
-        flex: 1 1 calc(100% / 3); /* 3 columns per row on smaller screens */
+    .menu-layout .task_column {
+        flex: 1 1 calc(100% / 4); /* 3 columns per row on smaller screens */
     }
 }
 
 @media (max-width: 768px) {
-    .task_column {
-        flex: 1 1 calc(100% / 2); /* 2 columns per row on small screens */
+    .menu-layout .task_column {
+        flex: 1 1 calc(100% / 5); /* 2 columns per row on small screens */
     }
 }
 
 @media (max-width: 576px) {
-    .task_column {
+    .menu-layout {
+        font-size: smaller;
+    }
+
+    .menu-layout .task_column {
         flex: 1 1 100%; /* 1 column per row on extra small screens */
     }
 }
-.save-button-container {
+.menu-layout .save-button-container {
     text-align: center;
     margin-top: 20px;
-  }
+}
   
-  .save-button {
+.menu-layout .save-button {
     background-color: #4CAF50;
     color: white;
     padding: 15px 30px;
@@ -79,8 +93,12 @@
     font-size: 16px;
     transition: background-color 0.3s ease;
     margin-bottom: 30px;
-  }
-  
-  .save-button:hover {
+    display: inline-flex; /* Use inline-flex to center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+    min-width: max-content; /* Ensure the button expands to fit its content */
+}
+
+.menu-layout .save-button:hover {
     background-color: #45a049;
-  }
+}
