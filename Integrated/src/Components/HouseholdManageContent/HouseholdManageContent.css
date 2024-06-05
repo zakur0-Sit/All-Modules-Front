@@ -26,6 +26,24 @@ main
     z-index: -1;
 }
 
+.add-member
+{
+    width: 700px;
+}
+
+.add-member button, .delete-confirmation button
+{
+    width: 200px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.add-member input
+{
+    width: 200px;
+    height: 40px;
+}
+
 .profile
 {
     width: 100%;
@@ -214,30 +232,6 @@ h4{
 
 }
 
-.household-item
-{
-    width: 80%;
-    height: 200px;
-    background-image: url('../../../public/img/account/2o.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* opacity: 0.6; */
-    margin: 20px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.household-item>h2
-{
-    font-weight: 800;
-    font-size: 35px;
-}
-
 @media only screen and (max-width: 1800px)
 {
     .element>input
@@ -390,7 +384,7 @@ h4{
 .user-list {
     max-height: 1600px; /* Setează înălțimea maximă a containerului */
     overflow-y: auto; /* Adaugă o bară de derulare pe axa y dacă conținutul depășește înălțimea */
-    margin-bottom: 80px; /* Adaugă o margine în partea de jos a containerului */
+    margin-bottom: 150px; /* Adaugă o margine în partea de jos a containerului */
     width: 100%; /* Setează lățimea containerului la 100% */
     max-width: 1000px; /* Setează lățimea maximă a containerului */
     background-color: #FAFAFA;
@@ -475,16 +469,31 @@ h2 {
         margin-left: 0; /* Elimină margin-left adăugat anterior */
     }
 }
+
+@media (max-width: 1150px)
+{
+    .add-member
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .add-member button, .delete-confirmation button
+    {
+        margin-top: 10px;
+    }
+}
+
 .user-item{
  
     border-top: 1px solid black;
 }
-.top-buttons{
-    background-color: white;
-    border: 1px solid black; /* Adaugă un chenar negru */
-    padding: 10px; /* Adaugă un spațiu în interiorul chenarului */
+.top-buttons
+{
+    padding: 10px; 
     margin: 10px;
-    
 }
 sent-inv-button{
     width: 40px;
@@ -494,15 +503,13 @@ sent-inv-button{
     color: #fff;
     border: none;
     cursor: pointer;
-    font-size: 16px; /* Adaugă dimensiunea inițială a fontului */
+    font-size: 16px; 
 }
-/* HouseholdContent.css */
-/* HouseholdContent.css */
+
 button {
-    background-color: #4CAF50; /* Verde */
     border: none;
     color: white;
-    padding: 10px 20px; /* Ajustează padding-ul pentru dimensiuni mai mici */
+    padding: 10px 20px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -512,11 +519,13 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #fff;
+    color: #1BBC9B;
+    border: 1px solid #1BBC9B;
 }
 
-.add-member-btn {
-    background-color: #4CAF50; /* Verde */
+.add-member-btn 
+{
     color: white;
     border: none;
     padding: 8px 16px; /* Dimensiuni mai mici */
@@ -526,13 +535,27 @@ button:hover {
     height: 10px; /* Ajustează înălțimea */
 }
 
-.add-member-btn:hover {
-    background-color: #45a049;
+.add-member
+{
+    width: 700px;
 }
 
+.add-member button, .delete-confirmation button
+{
+    width: 200px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.add-member input
+{
+    width: 200px;
+    height: 40px;
+}
+/* 
 .small-button {
-    padding: 5px 10px; /* Dimensiuni și mai mici */
-    font-size: 10px; /* Font și mai mic */
+    padding: 5px 10px; 
+    font-size: 10px; 
     width: 10px;
     height: auto;
-}
+} */

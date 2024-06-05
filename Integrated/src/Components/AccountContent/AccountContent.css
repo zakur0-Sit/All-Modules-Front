@@ -11,7 +11,32 @@
     align-items: center;
     overflow-y: auto;
 }
+.household .invite
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.invite-p
+{
+    margin: 20px 0 0 15px;
+}
+
+.household-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.household-buttons button
+{
+    height: 40px;
+    width: 150px;
+}
 .bg-img
 {
     width: 100%;
@@ -203,12 +228,21 @@ h4{
 .household
 {
     display: none;
-    width: 65%;
+    width: 85%;
     height: 65%;
     color: #000;
     position: absolute;
     background-color: #FAFAFA;
     margin-top: 75px;
+}
+
+.household-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
 }
 
 .household-item
@@ -232,6 +266,29 @@ h4{
 {
     font-weight: 800;
     font-size: 35px;
+}
+
+.household-content .circle
+{
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    z-index: 3;
+    top: -10px;
+}
+
+.household-content button
+{
+    z-index: 10;
+}
+.household-content .arrow
+{
+    position: absolute;
+    width: 300px;
+    z-index: 2;
+    right: 100px;
+    top: -150px;
+    rotate: 180deg;
 }
 
 @media only screen and (max-width: 1800px)
@@ -357,5 +414,10 @@ h4{
     .setings>p
     {
         font-size: 14px;
+    }
+
+    .invite
+    {
+        flex-direction: column;
     }
 }

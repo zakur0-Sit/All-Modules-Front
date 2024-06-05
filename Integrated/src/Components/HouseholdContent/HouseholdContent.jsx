@@ -15,8 +15,29 @@ export const HouseholdContent = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('household'); 
     const [household, setHousehold] = useState(null);
+    const [profileImage, setProfileImage] = useState(null);
+    const [invitations, setInvitations] = useState([]);
+    const [activeSection, setActiveSection] = useState(null);
 
     useEffect(() => {
+        fetch("http://localhost:9091/api/v1/household/get-invites", {
+            method: 'GET',
+            credentials: 'include',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            setInvitations(data);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+
         fetch("http://localhost:9091/account-security", {
             method: 'GET',
             credentials: 'include',
@@ -25,6 +46,11 @@ export const HouseholdContent = () => {
         .then(data => {
             console.log(data);
             setUser(data);
+            if (data.photo) {
+                const base64 = data.photo;
+                const arrayBuffer = base64ToArrayBuffer(base64);
+                setProfileImage(arrayBuffer);
+            }
         })
         .catch(error => {
             console.error('Error:', error);
@@ -48,6 +74,39 @@ export const HouseholdContent = () => {
             });
     }, []);
 
+    const handleSectionClick = (section) => {
+        setActiveSection(prevSection => prevSection === section ? null : section);
+    };
+
+    const handleAcceptInvite = (inviteId) => {
+        fetch(`http://localhost:9091/api/v1/household/accept-invite/${inviteId}`, {
+            method: 'POST',
+            credentials: 'include', // include sessions
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // "Invite accepted"
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    };
+
+    function base64ToArrayBuffer(base64) {
+        const binaryString = window.atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes.buffer;
+    }
+
     const handleDelete = () => {
         fetch(`http://localhost:9091/api/v1/household/remove-house`, {
             method: 'DELETE',
@@ -65,6 +124,25 @@ export const HouseholdContent = () => {
             setHousehold(null);
         })
         .catch(error => console.error('Error:', error));
+    };
+
+    const handleDeclineInvite = (inviteId) => {
+        fetch(`http://localhost:9091/api/v1/household/decline-invite/${inviteId}`, {
+            method: 'DELETE',
+            credentials: 'include', // include sessions
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // "Invite declined"
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     };
 
     // const handleSumbit = (e) => {
@@ -110,12 +188,18 @@ export const HouseholdContent = () => {
         }
     };
 
+    const arrayBufferToUrl = (buffer) => {
+        const blob = new Blob([buffer]);
+        const url = URL.createObjectURL(blob);
+        return url;
+    };
+
     return (
         <main>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">
-                    <img className='account-img' src="img/account/account.jpg" alt="account-img" />
+                <img className='account-img' src={profileImage ? arrayBufferToUrl(profileImage) : "img/account/account.jpg"} alt="account-img"/>
                     <p id='name'>{user?.username}</p>
                     <p id='role'>{user?.role}</p>
                     <a href="/#/signin" onClick={handleLogout}><Button text={"Log out"} /></a>
@@ -129,10 +213,37 @@ export const HouseholdContent = () => {
                     {activeTab === 'household' && (
                         <div className="household">
                             {household == null && (
-                                <a href="/#/addhousehold"><Button text={"Add new household"} /></a>
+                                <div className="invite">
+                                    <a href="/#/addhousehold"><Button text={"Add new household"} /></a>
+                                    <button onClick={() => setActiveSection(activeSection === 'viewInvitations' ? null : 'viewInvitations')}>
+                                        View Invitations
+                                    </button>
+                                </div>
+                                
+                            )}
+                            {household == null  && activeSection === 'viewInvitations' &&(
+                                <div className="show-invitations">
+                                     {invitations.map((invite, index) => (
+                                        <div className="household-buttons" key={index}>
+                                            <p className="invite-p" style={{ fontSize: '15px' }}>{`Invitation ${index + 1}`}</p>
+                                            <button onClick={() => {
+                                                handleAcceptInvite(invite.id);
+                                                window.location.reload();
+                                            }}>
+                                                Accept
+                                            </button>
+                                            <button onClick={() => {
+                                                handleDeclineInvite(invite.id);
+                                                window.location.reload();
+                                            }}>
+                                                Decline
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
                             )}
                             {household &&(
-                                <div>
+                                <div className="household-content"> 
                                 <div className="household-item" onClick={() => navigate('/household-manage')}>
                                     <h2>{household?.name}</h2>
                                     {/* <p>{household.address}</p>

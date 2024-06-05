@@ -5,6 +5,8 @@ import { HouseholdContext } from '../../HouseholdContext';
 import { redirect, useNavigate } from 'react-router-dom';
 import { ManageButton } from '../ManageButton/ManageButton';
 
+
+
 export const Content = () => {
     const [activeTab, setActiveTab] = useState('security');
     const { households } = useContext(HouseholdContext);
@@ -15,16 +17,89 @@ export const Content = () => {
     const [activeSection, setActiveSection] = useState(null);
     const [newMemberEmail, setNewMemberEmail] = useState('');
 
-    const exampleUsers = [
-        { id: 1, username: 'User1', role: 'parent', imgSrc: 'img/profile/user1.png' },
-        { id: 2, username: 'User2', role: 'parent', imgSrc: 'img/profile/user1.png' },
-        { id: 3, username: 'User3', role: 'child', imgSrc: 'img/profile/user1.png' },
-        { id: 4, username: 'User4', role: 'child', imgSrc: 'img/profile/user1.png' },
-        { id: 5, username: 'User5', role: 'child', imgSrc: 'img/profile/user1.png' },
-        { id: 6, username: 'User6', role: 'child', imgSrc: 'img/profile/user1.png' },
-        { id: 7, username: 'User7', role: 'child', imgSrc: 'img/profile/user1.png' }
-    ];
+    const [exampleUsers, setExampleUsers] = useState([]);
+    const [profileImage, setProfileImage] = useState(null);
+    const [username, setUsername] = useState('');
+    const [invitations, setInvitations] = useState([]);
 
+    
+
+    useEffect(() => {
+        fetch("http://localhost:9091/account-security", {
+            method: 'GET',
+            credentials: 'include',
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setUser(data);
+            if (data.photo) {
+                const base64 = data.photo;
+                const arrayBuffer = base64ToArrayBuffer(base64);
+                setProfileImage(arrayBuffer);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        fetch("http://localhost:9091/api/v1/household/get-invites", {
+            method: 'GET',
+            credentials: 'include',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            setInvitations(data);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+
+        
+        
+
+        fetch('http://localhost:9091/api/v1/household/load-users', {
+            method: 'GET',
+            credentials: 'include', // include sessions
+        })
+            .then(response => response.json())
+            .then(data => setExampleUsers(data));
+    }, []);
+
+    const handleInvite = (username) => {
+        fetch(`http://localhost:9091/api/v1/household/invite-user/${username}`, {
+            method: 'POST',
+            credentials: 'include', // include sessions
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // "User invited"
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    };
+
+    function base64ToArrayBuffer(base64) {
+        const binaryString = window.atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes.buffer;
+    }
+    
     const handleLogout = (e) => {
         e.preventDefault();
         if (token != null) {
@@ -33,6 +108,10 @@ export const Content = () => {
             navigate('/signin');
         }
     }
+
+    const handleInputChange = (event) => {
+        setUsername(event.target.value);
+    };
 
     const handleTabClick = (tab) => {
         if(tab === 'setings') {
@@ -43,7 +122,22 @@ export const Content = () => {
     };
 
     const handleDeleteUser = (userId) => {
-        console.log(`Delete user with ID: ${userId}`);
+        fetch(`http://localhost:9091/api/v1/household/kick-user/${userId}`, {
+            method: 'DELETE',
+            credentials: 'include', // include sessions
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // "User kicked"
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     };
 
     const handleManageRole = (userId, newRole) => {
@@ -53,13 +147,37 @@ export const Content = () => {
     const handleSectionClick = (section) => {
         setActiveSection(prevSection => prevSection === section ? null : section);
     };
+    const arrayBufferToUrl = (buffer) => {
+        const blob = new Blob([buffer]);
+        const url = URL.createObjectURL(blob);
+        return url;
+    };
+    const handleLeaveHouse = () => {
+        fetch(`http://localhost:9091/api/v1/household/leave-house`, {
+            method: 'DELETE',
+            credentials: 'include', // include sessions
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data); // "User left the household"
+            navigate('/account');
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    };
 
     return (
         <main>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">
-                    <img className='account-img' src="img/account/account.jpg" alt="account-img" />
+                <img className='account-img' src={profileImage ? arrayBufferToUrl(profileImage) : "img/account/account.jpg"} alt="account-img"/>
                     <p id='name'>{user?.username}</p>
                     <p id='role'>{user?.role}</p>
                     <a href="/#/signin" onClick={handleLogout}><Button text={"Log out"} /></a>
@@ -82,19 +200,24 @@ export const Content = () => {
                                     <>
                                         <button className="add-member-btn" onClick={() => handleSectionClick('addMember')}>Add New Member</button>
                                         <button className="add-member-btn" onClick={() => handleSectionClick('deleteHousehold')}>Delete Household</button>
-                                        <button className="add-member-btn" onClick={() => handleSectionClick('viewInvitations')}>View Invitations</button>
+                                        <button className="add-member-btn" onClick={() => handleSectionClick('viewInvitations')}>Leave Household</button>
                                     </>
                                 )}
                                 {activeSection === 'addMember' && (
-                                    <div className="add-member">
-                                        <input type="text" placeholder="Enter name"
-                                            style={{ width: '100px', height: '30px', fontSize: '1vw' }} />
-                                        <button style={{ width: '50px', height: '30px', fontSize: '10px', paddingTop: '5px', paddingLeft: '7px' }}>
-                                            Send Invitation
-                                        </button>
-                                        <button onClick={() => setActiveSection(null)} style={{ marginLeft: '10px' }}>Close</button>
-                                    </div>
-                                )}
+                                <div className="add-member">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter name"
+                                        onChange={handleInputChange}
+                                    />
+                                    <button 
+                                        onClick={() => handleInvite(username)}
+                                    >
+                                        Send Invitation
+                                    </button>
+                                    <button onClick={() => setActiveSection(null)}>Close</button>
+                                </div>
+                            )}
                                 {activeSection === 'deleteHousehold' && (
                                     <div className="delete-confirmation">
                                         <p style={{ fontSize: '10px' }}>Are you sure you want to delete?</p>
@@ -108,34 +231,26 @@ export const Content = () => {
                                     </div>
                                 )}
                                 {activeSection === 'viewInvitations' && (
-                                    <div className="show-invitations">
-                                        <p style={{ fontSize: '15px' }}>Invitation 1</p>
-                                        <button style={{ width: '150px', height: '30px' }}>
-                                            Accept
-                                        </button>
-                                        <button style={{ width: '150px', height: '30px' }}>
-                                            Decline
-                                        </button>
-                                        <p style={{ fontSize: '15px' }}>Invitation 2</p>
-                                        <button style={{ width: '150px', height: '30px' }}>
-                                            Accept
-                                        </button>
-                                        <button style={{ width: '150px', height: '30px' }}>
-                                            Decline
-                                        </button>
-                                        <button onClick={() => setActiveSection(null)} style={{ marginTop: '10px' }}>Close</button>
+                                    <div className="delete-confirmation">
+                                    <p style={{ fontSize: '14px' }}>Are you sure you want to leave this household?</p>
+                                    <button onClick={handleLeaveHouse}>Yes</button>
+                                    <button onClick={() => setActiveSection(null)}>No</button>
                                     </div>
                                 )}
                             </div>
                             <div className="user-list">
                                 <h2>Users list:</h2>
-                                {exampleUsers.map((user) => (
+                                {exampleUsers.map((user) => {
+                                console.log(user); // This will log the user object to the console
+                                return (
                                     <div key={user.id} className="user-item">
-                                        <img className='user-img' src={user.imgSrc} alt={`${user.username}-img`} />
                                         <p className='user-name'>{user.username}</p>
                                         <p className='user-role'>{user.role}</p>
                                         <div className="user-actions">
-                                            <button style={{ backgroundColor: "red" }} className="delete-button" text={"Delete"} onClick={() => handleDeleteUser(user.id)}>Kick</button>
+                                            <button style={{ backgroundColor: "red" }} className="delete-button" text={"Delete"} onClick={() => {
+    handleDeleteUser(user.id);
+    window.location.reload();
+}}>Kick</button>
                                             <select value={role[user.id] || ''} onChange={(e) => handleManageRole(user.id, e.target.value)}>
                                                 <option value="">Manage...</option>
                                                 <option value="parent">Parent</option>
@@ -143,7 +258,8 @@ export const Content = () => {
                                             </select>
                                         </div>
                                     </div>
-                                ))}
+                                )
+                            })}
                             </div>
                         </div>
                     )}
