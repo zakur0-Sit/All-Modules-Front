@@ -18,6 +18,7 @@ export const Content = () =>
     const token = localStorage.getItem('jwtToken');
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
+    
 
     useEffect(() => {
         fetch("http://localhost:9091/account-security", {
@@ -28,6 +29,11 @@ export const Content = () =>
         .then(data => {
             console.log(data);
             setUser(data);
+            if (data.photo) {
+                const base64 = data.photo;
+                const arrayBuffer = base64ToArrayBuffer(base64);
+                setProfileImage(arrayBuffer);
+            }
         })
         .catch(error => {
             console.error('Error:', error);
@@ -36,17 +42,18 @@ export const Content = () =>
 
     const handleSumbit = (e) => {
         e.preventDefault();
-        const sendUser = {email, username, password}
-        const userUpdate = {user: sendUser, oldPassword}
-        console.log(userUpdate)
+        const formData = new FormData();
+        formData.append('file', new Blob([profileImage.buffer]), 'profile.jpg');
+        formData.append('user', JSON.stringify({email, username, password}));
+        formData.append('oldPassword', oldPassword);
+
         fetch("http://localhost:9091/account-security", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
             credentials: 'include',
-            body: JSON.stringify(userUpdate)
+            body: formData
         }).then(response => {
             if (response.ok) {
                 console.log('User updated succesfully');
@@ -58,6 +65,16 @@ export const Content = () =>
         }).catch(error => {
             setErrorMessage(error.message);
         });
+    }
+
+    function base64ToArrayBuffer(base64) {
+        const binaryString = window.atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes.buffer;
     }
 
     const handleLogout = (e) => {
@@ -82,10 +99,11 @@ export const Content = () =>
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                setProfileImage(e.target.result);
+            reader.onloadend = () => {
+                setProfileImage(new Uint8Array(reader.result));
             };
-            reader.readAsDataURL(file);
+        
+            reader.readAsArrayBuffer(file);
         }
     };
 
@@ -93,12 +111,18 @@ export const Content = () =>
         fileInputRef.current.click();
     };
 
+    const arrayBufferToUrl = (buffer) => {
+        const blob = new Blob([buffer]);
+        const url = URL.createObjectURL(blob);
+        return url;
+    };
+
     return (
-        <main className='account-main'>
+        <main>
             <div className="bg-img"></div>
             <div className="profile">
                 <div className="content-info">
-                    <img className='account-img' src={profileImage || "img/account/account.jpg"} alt="account-img" onClick={handleProfileImageClick} />
+                <img className='account-img' src={profileImage ? arrayBufferToUrl(profileImage) : "img/account/account.jpg"} alt="account-img" onClick={handleProfileImageClick} />
                     <input
                         type="file"
                         ref={fileInputRef}

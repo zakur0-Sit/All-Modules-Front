@@ -1,4 +1,3 @@
-
 import { HouseholdContext } from "../../HouseholdContext";
 import { Button } from "../Button/Button";
 import React, { useContext, useState, useEffect } from 'react';
@@ -6,19 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 export const HouseholdContent = () => {
     const [user, setUser] = useState(null);
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [oldPassword, setOldPassword] = useState('');
-    const [password, setpassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [oldPassword, setOldPassword] = useState('');
+    // const [password, setpassword] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
     const { households } = useContext(HouseholdContext);
     const token = localStorage.getItem('jwtToken');
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('household'); 
-
-    useEffect(() => {
-        console.log('Households:', households);
-    }, [households]);
+    const [household, setHousehold] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:9091/account-security", {
@@ -33,33 +29,69 @@ export const HouseholdContent = () => {
         .catch(error => {
             console.error('Error:', error);
         });
+    
+            fetch("http://localhost:9091/api/v1/household/get-house" , {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setHousehold(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }, []);
 
-    const handleSumbit = (e) => {
-        e.preventDefault();
-        const sendUser = {email, username, password}
-        const userUpdate = {user: sendUser, oldPassword}
-        console.log(userUpdate)
-        fetch("http://localhost:9091/account-security", {
-            method: 'POST',
+    const handleDelete = () => {
+        fetch(`http://localhost:9091/api/v1/household/remove-house`, {
+            method: 'DELETE',
+            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            credentials: 'include',
-            body: JSON.stringify(userUpdate)
-        }).then(response => {
-            if (response.ok) {
-                console.log('User updated succesfully');
-                localStorage.removeItem('jwtToken');
-                navigate('/signin');
-            } else {
-                throw new Error('The username and mail are already registered or the oldPassword is inccorect!')
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        }).catch(error => {
-            setErrorMessage(error.message);
-        });
-    }
+            // If the delete was successful, remove the household from the state
+            console.log(response);
+            setHousehold(null);
+        })
+        .catch(error => console.error('Error:', error));
+    };
+
+    // const handleSumbit = (e) => {
+    //     e.preventDefault();
+    //     const sendUser = {email, username, password}
+    //     const userUpdate = {user: sendUser, oldPassword}
+    //     console.log(userUpdate)
+    //     fetch("http://localhost:9091/account-security", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${token}`,
+    //         },
+    //         credentials: 'include',
+    //         body: JSON.stringify(userUpdate)
+    //     }).then(response => {
+    //         if (response.ok) {
+    //             console.log('User updated succesfully');
+    //             localStorage.removeItem('jwtToken');
+    //             navigate('/signin');
+    //         } else {
+    //             throw new Error('The username and mail are already registered or the oldPassword is inccorect!')
+    //         }
+    //     }).catch(error => {
+    //         setErrorMessage(error.message);
+    //     });
+    // }
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -96,18 +128,21 @@ export const HouseholdContent = () => {
                     <hr />
                     {activeTab === 'household' && (
                         <div className="household">
-                            {households.length < 1 && (
+                            {household == null && (
                                 <a href="/#/addhousehold"><Button text={"Add new household"} /></a>
                             )}
-                            {households.map((household, index) => (
-                                <div key={index} className="household-item" onClick={() => navigate('/household-manage')}>
-                                    <h2>{household.name}</h2>
+                            {household &&(
+                                <div>
+                                <div className="household-item" onClick={() => navigate('/household-manage')}>
+                                    <h2>{household?.name}</h2>
                                     {/* <p>{household.address}</p>
                                     <p>{household.city}</p>
                                     <p>{household.country}</p> */}
-                                    <p>{household.description}</p>
+                                    <p>{household?.description}</p>
                                 </div>
-                            ))}
+                                <Button text="Delete" onClick={handleDelete} />
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
