@@ -12,7 +12,7 @@ function RecipeCards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/v1/recipes/recipePage?pageNo=' + currentPage);
+        const response = await fetch('http://localhost:9091/api/v1/recipes/recipePage?pageNo=' + currentPage);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -31,7 +31,7 @@ function RecipeCards() {
   const handleLike = async (recipeId) => {
     try {
       const userId = 1; // Replace with actual user ID
-      const response = await fetch(`http://localhost:5000/api/v1/recipes/addLike?recipeId=${recipeId}&userId=${userId}`, {
+      const response = await fetch(`http://localhost:9091/api/v1/recipes/addLike?recipeId=${recipeId}&userId=${userId}`, {
         method: 'POST',
       });
       if (!response.ok) {
@@ -47,7 +47,7 @@ function RecipeCards() {
   const handleDislike = async (recipeId) => {
     try {
       const userId = 1; // Replace with actual user ID
-      const response = await fetch(`http://localhost:5000/api/v1/recipes/removeLike?recipeId=${recipeId}&userId=${userId}`, {
+      const response = await fetch(`http://localhost:9091/api/v1/recipes/removeLike?recipeId=${recipeId}&userId=${userId}`, {
         method: 'POST',
       });
       if (!response.ok) {

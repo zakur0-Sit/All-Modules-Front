@@ -19,7 +19,7 @@ export const MenuContent = () => {
 
   const fetchRecipeDetails = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/v1/recipes/recipe/${id}`);
+      const response = await fetch(`http://localhost:9091/api/v1/recipes/recipe/${id}`);
       
       if (!response.ok) {
         //console.error(`HTTP error! status: ${response.status}`);
@@ -100,6 +100,7 @@ export const MenuContent = () => {
     return newTasks;
   };
 
+
   useEffect(() => {
     const saveMealPlan = async () => {
       if (isTasksEmpty(tasks)) {
@@ -112,7 +113,7 @@ export const MenuContent = () => {
       //console.log('Sending meals to Spring like:', mealPlanObj);
   
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/recipes/saveMealPlan`, {
+        const response = await fetch(`http://localhost:9091/api/v1/recipes/saveMealPlan`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -142,7 +143,7 @@ export const MenuContent = () => {
       let data = null;
       try {
         console.log('Fetching meal plan...');
-        const response = await fetch(`http://localhost:5000/api/v1/recipes/getMealPlan?householdId=${householdId}`, {
+        const response = await fetch(`http://localhost:9091/api/v1/recipes/getMealPlan?householdId=${householdId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -169,7 +170,7 @@ export const MenuContent = () => {
             console.log('Fetching recommendations...');
             setIsLoading(true);
             const fetchRecipeIds = async (id) => {
-              const response = await fetch(`http://localhost:5000/api/v1/recipes/getRecommendations/${id}/categorized`);
+              const response = await fetch(`http://localhost:9091/api/v1/recipes/getRecommendations/${id}/categorized`);
               if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
@@ -243,7 +244,7 @@ export const MenuContent = () => {
   const handleLike = async (recipeId) => {
     try {
       const userId = 1;
-      const response = await fetch(`http://localhost:5000/api/v1/recipes/addLike?recipeId=${recipeId}&userId=${userId}`, {
+      const response = await fetch(`http://localhost:9091/api/v1/recipes/addLike?recipeId=${recipeId}&userId=${userId}`, {
         method: 'POST',
       });
       if (!response.ok) {
@@ -258,7 +259,7 @@ export const MenuContent = () => {
 
   const handleDislike = async (recipeId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/v1/recipes/removeLike?recipeId=${recipeId}&userId=${userId}`, {
+      const response = await fetch(`http://localhost:9091/api/v1/recipes/removeLike?recipeId=${recipeId}&userId=${userId}`, {
         method: 'POST',
       });
       if (!response.ok) {
@@ -286,23 +287,66 @@ export const MenuContent = () => {
   };
 
   const handleSaveMealPlan = async () => {
-    const recipeIds = tasks.map(task => task.recipeId);
+    setIsLoading(true);
+
+    console.log('Saving meal plan in shopping list...');
+    let recipeIngredients = [];
+    let productMap = new Map();
     try {
-      const response = await fetch('https://exemplu.api/saveMealPlan', {
+      for(const task of tasks){
+        const recipeDetails = await fetchRecipeDetails(task.recipeId);
+        for(const ing of recipeDetails.ingredients){
+          if(!ing.productId || !ing.quantity || !ing.quantity.value || !ing.productId.id)
+            continue;
+
+
+          
+          let quantityToAdd = 0;
+          if(ing.quantity.value > 100) quantityToAdd = ing.quantity.value / 100;
+          else if(ing.quantity.value > 10) quantityToAdd = ing.quantity.value / 10;
+          else if(ing.quantity.value <= 0) quantityToAdd = 0.5;
+          else quantityToAdd = ing.quantity.value;
+            
+          if(productMap.has(ing.productId.id)){
+            productMap.set(ing.productId.id, productMap.get(ing.productId.id) + quantityToAdd);
+          } else {
+            productMap.set(ing.productId.id, quantityToAdd);
+          }
+        }
+
+      }
+
+      console.log('Product map for shopping list:', productMap);
+      //TODO: CREATE SHOPPING LIST FOR CERTAI  HOUSEHOLD
+      const response = await fetch(`http://localhost:9091/shopping/addList`, 
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ recipeIds }),
       });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+
+      console.log('Response create shopping list:', response);
+      for(const [key, value] of productMap){
+        try{
+          //TODO ADD INGREDIENT TO SHOPPING LIST FOR CERTAIN HOUSEHOLD
+          const response = await fetch(`http://localhost:9091/shopping/addIngredient?idProduct=${key}&quantity=${value}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+        } catch (error) {
+          console.error('Error in saving product:' + key + ' with quantity:' + value);
+        }
       }
-      const data = await response.json();
-      //console.log('Meal plan saved:', data);
+
+
     } catch (error) {
-      //console.error('Error saving meal plan:', error);
-    }
+      console.error('Error in saving all ing of meal plan:', error);
+    
+    } finally { setIsLoading(false) };
   };
 
   return (
