@@ -20,6 +20,10 @@
 
 .card-body {
     padding: 1rem;
+    display:flex;
+    flex-direction: column;
+
+
 }
 
 .btn {
@@ -37,12 +41,12 @@
 }
 
 .like-button {
-    background-color: #f0f0f0;
+    background-color: #0b91df;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 1rem;
+    margin-top: -2.2rem;
     transition: background-color 0.3s;
     margin-left: 140px;
 }

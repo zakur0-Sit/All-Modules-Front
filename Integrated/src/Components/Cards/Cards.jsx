@@ -1,9 +1,7 @@
-// src/components/Cards.jsx
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
 import Modal from '../Modal/modal';
-import { fetchImage} from "../../pexelsApiFetch";
-
+import { fetchImage } from "../../pexelsApiFetch";
 
 function Cards({ recipe, handleLike, handleDislike }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,11 +15,20 @@ function Cards({ recipe, handleLike, handleDislike }) {
   const handleLikeClick = () => {
     if (liked) {
       handleDislike(recipe.recipeId);
+      localStorage.removeItem(`liked-${recipe.recipeId}`);
     } else {
       handleLike(recipe.recipeId);
+      localStorage.setItem(`liked-${recipe.recipeId}`, 'true');
     }
     setLiked(!liked);
   };
+
+  useEffect(() => {
+    const likedStatus = localStorage.getItem(`liked-${recipe.recipeId}`);
+    if (likedStatus === 'true') {
+      setLiked(true);
+    }
+  }, [recipe.recipeId]);
 
   useEffect(() => {
     if (recipe.imageList && recipe.imageList.length > 0) {
