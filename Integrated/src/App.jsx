@@ -23,8 +23,8 @@ export function App() {
     <HouseholdProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/account" element={<Account />} />
           <Route path="/addhousehold" element={<AddHousehold />} />
