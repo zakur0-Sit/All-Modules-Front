@@ -50,23 +50,25 @@ const TaskForm = ({ setTasks, setParentLoading }) => {
   }, [setParentLoading]);
 
   const handleSearch = (term) => {
-    setSearchTerm(term);
+    // If the search term is empty, clear the search results and return
     if (term.trim() === "") {
       setSearchResults([]);
       return;
     }
-
+  
+    // Filter the list of all recipes based on the search term
     const filteredResults = allRecipes.filter(recipe =>
       recipe.recipeTitle.toLowerCase().includes(term.toLowerCase())
     );
-
-    // Sort results based on the position of the search term in the title
+  
+    // Sort the filtered results based on the position of the search term in the title
     filteredResults.sort((a, b) => {
       const aIndex = a.recipeTitle.toLowerCase().indexOf(term.toLowerCase());
       const bIndex = b.recipeTitle.toLowerCase().indexOf(term.toLowerCase());
       return aIndex - bIndex;
     });
-
+  
+    // Update the search results
     setSearchResults(filteredResults);
   };
 
@@ -125,17 +127,19 @@ const TaskForm = ({ setTasks, setParentLoading }) => {
   return (
     <header className="app_header">
       <form className='task_form' onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="task"
-          value={taskData.task}
-          className="task_input"
-          placeholder="Enter your meal"
-          autoComplete="off"
-          style={{ color: '#000', backgroundColor: '#fff' }}
-          onChange={(e) => handleSearch(e.target.value)}
-          onFocus={(e) => handleSearch(e.target.value)}
-        />
+      <input
+        type="text"
+        name="task"
+        value={taskData.task}
+        className="task_input"
+        placeholder="Enter your meal"
+        autoComplete="off"
+        style={{ color: '#000', backgroundColor: '#fff' }}
+        onChange={(e) => {
+          setTaskData({ ...taskData, task: e.target.value }); // Update the taskData.task state
+          handleSearch(e.target.value); // Then call handleSearch
+        }}
+      />
         {isLoading && <div className="loading_message">Loading recipes...</div>}
         {searchResults.length > 0 && (
           <div className="search_results_container" ref={searchResultsRef}>

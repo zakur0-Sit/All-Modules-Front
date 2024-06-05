@@ -33,7 +33,7 @@ export default function Modal({ recipe, toggleModal, img }) {
                     <div className="text-box-left">
                     <h3>INGREDIENTS</h3>
                     <ul>
-                        { recipe.printableIngredients.map( ingredient => <li>{ingredient.replace(/"/g, '')}</li>) }
+                        { recipe && recipe.printableIngredients && recipe.printableIngredients.map( ingredient => <li>{ingredient.replace(/"/g, '')}</li>) }
                     </ul>
                     </div>
                     
