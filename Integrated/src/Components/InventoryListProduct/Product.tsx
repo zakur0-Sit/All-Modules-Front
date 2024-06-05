@@ -76,6 +76,8 @@ const Product: React.FC<ItemList & ProductDeclareProps> = ({
     }
     if(item.name != '')
       fetchImageData();
+    else
+      setImageSrc("img/ico/questionmark.png")
   }, [item.name])
 
   const handleConfirmInv = () => {
@@ -106,7 +108,7 @@ const Product: React.FC<ItemList & ProductDeclareProps> = ({
         <img style={{margin: '10px'}} src={imageSrc} alt={item.name} className="productImageInventory" />
       }
       <div className="productInfoInventory">
-        {imageSrc !== "img/ico/questionmark.png" && edit && !confirmInv && (
+        {item.name !== '' && edit && !confirmInv && (
           <>
         <div className="quantityControlsInventory "> 
         <button className="editButton" onClick={handleEdit}>Edit</button>
@@ -170,7 +172,7 @@ const Product: React.FC<ItemList & ProductDeclareProps> = ({
         </div>
         }
         <form className="productInfoInventory" onSubmit={handleSubmit}>
-        {imageSrc === "img/ico/questionmark.png" && (
+        {item.name === '' && (
           <div className="productInfoInventory">
             <SearchBar 
               inputRef={inputRef}
@@ -184,7 +186,7 @@ const Product: React.FC<ItemList & ProductDeclareProps> = ({
             />
         </div>
         )}
-        {imageSrc === "img/ico/questionmark.png" && (
+        {item.name === '' && (
           <button 
               className="buyButtonInventory"
               type='submit'

@@ -14,13 +14,13 @@ export const Header = () => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    /*useEffect(() => {
+    useEffect(() => {
         const fetchNotifications = async () => {
             try {
                 const response = await fetch('http://localhost:9091/notifications');
-                if (!response.ok) {
+                /*if (!response.ok) {
                     throw new Error('Network response was not ok');
-                }
+                }*/
                 const data = await response.json();
 
                 if (Array.isArray(data.notificationList)) {
@@ -33,17 +33,16 @@ export const Header = () => {
                     throw new Error('Data format is incorrect');
                 }
             } catch (error: unknown) {
-                if (error instanceof Error) {
+                /*if (error instanceof Error) {
                     setError(error.message);
                 } else {
                     setError('An unknown error occurred');
-                }
+                }*/
             }
         };
 
         fetchNotifications();
     }, []);
-    */
 
     const handleNotif = () => {
         setNotif(!notif);
@@ -77,7 +76,7 @@ export const Header = () => {
                         {notif &&
                             <div className="NotifDropDown">
                                 <div className='NotifHeader'>
-                                    <h5>Notifications</h5>
+                                    <div className='notifTitle'>Notifications</div>
                                     <button onClick={() => {setNotifications([]); clearNotifications()}}><b>Clear</b></button>
                                 </div>
                                 <div className="NotifContent">
@@ -88,11 +87,11 @@ export const Header = () => {
                                             <div className="EachNot" key={index}>
                                                 {
                                                     (notification.message.split(' ')[1] === 'chore' || notification.message.split(' ')[1] === 'chores') ? 
-                                                    (<Link to='/chores'><h3 key={notification.id}>{notification.message}</h3></Link>) :
+                                                    (<Link to='/chores'><p key={notification.id}>{notification.message}</p></Link>) :
                                                     (notification.message.split(' ')[1] === 'shopping') ?
-                                                    (<Link to='/shopping-list'><h3 key={notification.id}>{notification.message}</h3></Link>) :
+                                                    (<Link to='/shopping-list'><p key={notification.id}>{notification.message}</p></Link>) :
                                                     (notification.message.split(' ')[1] === 'inventory') ?
-                                                    (<Link to='/inventory'><h3 key={notification.id}>{notification.message}</h3></Link>) :
+                                                    (<Link to='/inventory'><p key={notification.id}>{notification.message}</p></Link>) :
                                                     <h3 key={notification.id}>{notification.message}</h3>
                                                 }
                                             </div>

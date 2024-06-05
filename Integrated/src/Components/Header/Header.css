@@ -11,6 +11,14 @@
     border: 1px solid white;
     border-radius: 5px 5px 5px 5px;
 }
+.notifTitle{
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10px
+}
 
 .NotifHeader {
     display: flex;
@@ -39,7 +47,7 @@
     background-color: #be0909;
 }
 
-.NotifContent h3 {
+.NotifContent p {
     text-align: justify;
     padding-left: 10px;
     padding-right: 10px;
@@ -73,8 +81,9 @@
     z-index: 1000;
     right: 9%;
     border-radius: 5px 5px 5px 5px;
+    min-width: fit-content;
 }
-.EachNot h3{
+.EachNot p{
     color: white;
 }
 .EachNot:hover{

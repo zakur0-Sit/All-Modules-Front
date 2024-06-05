@@ -70,7 +70,7 @@ const InventoryListPage: React.FC = () => {
     <div className="appContainerInventory">
       <Header />
       <main className='mainInventory'>
-        {loading && <p className='paragraphInvetory'>Inventory is loading...</p>}
+        {loading && <p className='paragraphInventory'>Inventory is loading...</p>}
         {fetchError && <p className='paragraphInventory' style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
         {!fetchError && !loading && 
           <Content 
