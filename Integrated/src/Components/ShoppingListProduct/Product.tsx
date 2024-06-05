@@ -73,6 +73,8 @@ const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
     }
     if(item.name != '')
       fetchImageData();
+    else
+      setImageSrc("img/ico/questionmark.png");
   }, [item.name])
 
   const handleConfirmShop = () => {
@@ -92,7 +94,7 @@ const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
         <img style={{margin: '10px'}} src={imageSrc} alt={item.name} className="productImageShopping" />
       }
       <div className="productInfoShopping">
-        {imageSrc !== "img/ico/questionmark.png" && !confirmShop && (
+        {item.name !== '' && !confirmShop && (
           <>
         <div className="quantityControlsShopping">
           <button className="markStyle" onClick={() => {if(buyItem) buyItem(item.name)}}>Mark as bought</button>
@@ -114,7 +116,7 @@ const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
         </div>
         )}
         <form className="productInfoShopping" onSubmit={handleSubmit}>
-          {imageSrc === "img/ico/questionmark.png" && (
+          {imageSrc === "img/ico/questionmark.png" && item.name === '' && (
             <div className="productInfoShopping">
               <SearchBar 
               inputRef={inputRef}
@@ -128,7 +130,7 @@ const Product: React.FC<ShoppingItem & ProductDeclareProps> = ({
             />
             </div>
           )}
-          {imageSrc === "img/ico/questionmark.png" && (
+          {imageSrc === "img/ico/questionmark.png" && item.name === '' && (
             <button className="buyButtonShopping" type='submit' aria-label='Add Item' onClick={handleButton}>Add</button>
           )}
         </form>
