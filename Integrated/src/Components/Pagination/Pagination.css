@@ -1,0 +1,23 @@
+.current-page-button{
+    background-color: #1bbc9b;
+    color: white;
+}
+.page-button{
+    border: none;
+    font-size: 13px;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.current-page-button:hover{
+    background-color: #13a588 !important;
+
+}
+.page-button:hover{
+    background-color: rgb(228, 227, 227);
+}
+.pagination-container{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+}

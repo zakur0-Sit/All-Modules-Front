@@ -1,6 +1,86 @@
+/* Menu.css */
 .menu-layout {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
     padding-top: 50px;
 }
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.animation-container {
+    width: 400px; /* Increase the size */
+    height: 400px;
+}
+
+.blur-background {
+    filter: blur(5px);
+}
+
+.app_main {
+    display: flex;
+    flex-wrap: wrap; /* Ensure columns wrap on smaller screens */
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.task_column {
+    flex: 1 1 calc(100% / 7); /* Each column takes 1/7th of the available width */
+    box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    .task_column {
+        flex: 1 1 calc(100% / 5); /* 5 columns per row on medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .task_column {
+        flex: 1 1 calc(100% / 3); /* 3 columns per row on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .task_column {
+        flex: 1 1 calc(100% / 2); /* 2 columns per row on small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .task_column {
+        flex: 1 1 100%; /* 1 column per row on extra small screens */
+    }
+}
+.save-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .save-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+  }
+  
+  .save-button:hover {
+    background-color: #45a049;
+  }

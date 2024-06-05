@@ -21,6 +21,7 @@ export const AddRecipeButton = () => {
       padding: "20px",
       borderRadius: "10px",
       minWidth: "1000px",
+      height:"80%"
     },
   };
   return (
