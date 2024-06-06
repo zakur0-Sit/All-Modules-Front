@@ -66,6 +66,13 @@ const InventoryListPage: React.FC = () => {
           }*/
       }
   }
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupProduct, setPopupProduct] = useState<{ id: number, name: string } | null>(null);
+  const handleNotificationClick = (id: number, name: string) => {
+    setPopupProduct({ id, name });
+    setShowPopup(true);
+  };
   return (
     <div className="appContainerInventory">
       <Header />
@@ -87,10 +94,10 @@ const InventoryListPage: React.FC = () => {
           />
         }
         <Notifications />
-      </main>
-      <Footer />
-    </div>
-  );
+            </main>
+            <Footer />
+          </div>
+        );
 };
 
 export default InventoryListPage;

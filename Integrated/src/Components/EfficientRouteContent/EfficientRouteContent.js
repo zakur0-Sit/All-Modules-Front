@@ -288,12 +288,12 @@ export const EfficientRouteContent = () => {
     /*ver noua netestata fara request */
     const fetchData_consumption = async () => {
         try {
-            const response = await fetch('http://localhost:9091/inventory/infoItemRestock', {
+            const response = await fetch('http://localhost:9091/inventory/computeAvgConsumption', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(58)
+                body: JSON.stringify(-1)
             });
 
             if (!response.ok) {

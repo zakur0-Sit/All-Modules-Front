@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Product, { ProductProps , ShoppingList, ShoppingItem} from '../ShoppingListProduct/Product';
 import ItemLists from '../ShoppingListItemLists/ItemLists';
 import APIRequest from '../APIRequest/APIRequest';
+import { useSearchParams } from 'react-router-dom';
 
 interface ContentProps{
   products: ProductProps;
@@ -253,19 +254,23 @@ const Content: React.FC<ContentProps> = ({
     }, 30);
   };
 
-  /*pt popup la notificare -- modul 4*/
-  const [showPopup, setShowPopup] = useState(false);
+    /*pt popup la notificare -- modul 4*/
+    const [showPopup, setShowPopup] = useState(false);
     const [productId, setProductId] = useState<string | null>('');
     const [productName, setProductName] = useState<string | null>('');
+    const [searchParams] = useSearchParams();
+    const searchObject = Object.fromEntries(searchParams.entries());
 
+    const [preFilledProductName, setPreFilledProductName] = useState<string | null>(null);
     useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('fromNotification') === 'true') {
-            setShowPopup(true);
-            setProductId(urlParams.get('productId'));
-            setProductName(urlParams.get('productName'));
-        }
-    }, []);
+      const fromNotification = searchObject['fromNotification'];
+      const productName = searchObject['productName'];
+    
+      if (fromNotification === 'true' && productName) {
+        setPreFilledProductName(productName);
+        setNewProduct(productName); // Add this line
+      }
+    }, [searchObject]);
 
     const removeQueryParam = () => {
         const url = new URL(window.location.href);
@@ -277,7 +282,7 @@ const Content: React.FC<ContentProps> = ({
 
     const handleYesClick = async () => {
         try {
-            const response = await fetch('http://localhost:9091/shopping/addItemWithBody', {
+            const response = await fetch('http://localhost:9091/shopping/addItem', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -347,15 +352,15 @@ const Content: React.FC<ContentProps> = ({
           {nlist &&
             <div className="newListPrompt">
               <img src="img/ico/product.png"></img>
-              <form className="formStyleShopping" onSubmit={(e) => handleSubmitList(e)}>
+              <form className="formStyleShopping" onSubmit={(e) => handleSubmit(e)}>
                 <input
                   autoFocus
                   type="text"
                   required
                   placeholder="Name"
-                  value={newList}
+                  value={preFilledProductName ? preFilledProductName : newProduct}
                   ref={inputRef}
-                  onChange={(e) => {if(setNewList) setNewList(e.target.value)}}
+                  onChange={(e) => {if(setNewProduct) setNewProduct(e.target.value)}}
                 />
                 <button className="addNewList" type='submit' onClick={handleButton}>Add list</button>
               </form>

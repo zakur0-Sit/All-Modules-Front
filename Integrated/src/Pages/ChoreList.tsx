@@ -61,6 +61,13 @@ const ChoreListPage: React.FC = () => {
     }, 2000);
   }, []);
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupProduct, setPopupProduct] = useState<{ id: number, name: string } | null>(null);
+  const handleNotificationClick = (id: number, name: string) => {
+    setPopupProduct({ id, name });
+    setShowPopup(true);
+  };
+
   return (
     <div>
       <Header />
@@ -90,10 +97,10 @@ const ChoreListPage: React.FC = () => {
           />
         )}
         <Notifications />
-      </main>
-      <Footer />
-    </div>
-  );
+            </main>
+            <Footer />
+          </div>
+        );
 };
 
 export default ChoreListPage;
