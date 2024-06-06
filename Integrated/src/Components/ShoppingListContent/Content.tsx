@@ -277,7 +277,7 @@ const Content: React.FC<ContentProps> = ({
 
     const handleYesClick = async () => {
         try {
-            const response = await fetch('http://localhost:8080/shopping/addItemWithBody', {
+            const response = await fetch('http://localhost:9091/shopping/addItemWithBody', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -301,7 +301,7 @@ const Content: React.FC<ContentProps> = ({
 
     const handleNoClick = async () => {
         try {
-            const response = await fetch('http://localhost:8080/inventory/notAcceptSuggestion', { 
+            const response = await fetch('http://localhost:9091/inventory/notAcceptSuggestion', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

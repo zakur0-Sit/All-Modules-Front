@@ -61,7 +61,7 @@ export const EfficientRouteContent = () => {
     });
     const [stores, setStores] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    const [shoppingLists, setShoppingLists] = useState([]);
    
     useEffect(() => {
         setStores([]);
@@ -96,11 +96,41 @@ export const EfficientRouteContent = () => {
             }
         };
 
-        fetchInitialLocation(); 
-
-       
+        fetchInitialLocation();        
     }, []);
+    useEffect(() => {
+        const fetchShoppingLists = async () => {
+            try {
+                const response = await fetch('http://localhost:9091/api/lists', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'credentials': 'include' // Include cookies with the request
+                    }
+                });
 
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                if (data.error) {
+                    throw new Error(data.error);
+                } else {
+                    const formattedLists = Object.entries(data).map(([id, name]) => ({
+                        id: parseInt(id),
+                        name: name
+                    }));
+                    setShoppingLists(formattedLists);
+                    console.log("Shopping Lists:", formattedLists); // Print the data here
+                }
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        };
+
+        fetchShoppingLists();
+    }, []);
 
     useEffect(() => {
         const script1 = document.createElement('script');
@@ -175,15 +205,16 @@ export const EfficientRouteContent = () => {
             return;
         }
         setLoading(true);
+        console.log("Selected list: ", selectedList);
         try {
             const response = await fetch('http://localhost:9091/api/endpoint', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message: selectedList })
+                body: JSON.stringify(selectedList) 
             });
-
+    
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -415,12 +446,17 @@ export const EfficientRouteContent = () => {
                 </div>
                 <div className="generate-content">
                     <p>Choose a shopping list to generate a route:</p>
-                    <select value={selectedList} onChange={handleDropdownChange} id="waypointsDropdown">
-                        <option value="" disabled>Select Shopping List</option>
-                        <option value="shoppingList1">Shopping List 1</option>
-                        <option value="shoppingList2">Shopping List 2</option>
-                        <option value="shoppingList3">Shopping List 3</option>
+                    <select
+                        className="dropdown"
+                        value={selectedList}
+                        onChange={handleDropdownChange}
+                    >
+                        <option value="">Select a list</option>
+                        {shoppingLists.map((list) => (
+                            <option key={list.id} value={list.id}>{list.name}</option>
+                        ))}
                     </select>
+
                 </div>
             </div>
             <div className="mymap" id={mapId}>
