@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserRecipeCard.css';
 import { FaTrash } from 'react-icons/fa';
 import { ConfirmationModal } from '../ConfirmationModal/ConfirmationModal';
 import { deleteRecipe, getRecipes } from '../services/recipe';
 import { DISPLAY_ITEMS_PER_PAGE, USER_ID } from '../../utils/utils';
+import { fetchImage } from '../../pexelsApi';
 
 export const UserRecipeCard = ({ recipe, setTotalPages, setRecipes }) => {
-    const imageSrc = (recipe.imageList && recipe.imageList.length > 0) ? recipe.imageList[0] : 'defaultImage.jpg';
+    const [imageSrc, setImageSrc] = useState(null);
     const {recipeId, recipeTitle} = recipe;
     const [loadingDeleteButton, setLoadingDeleteButton] = useState(false);
     const [deleteError, setDeleteError] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [isDeleteModalOpen, setIsDeleteOpenModal] = useState(false);
+
+
+
+    useEffect(() => {
+        if(recipe)
+            if (recipe && recipe.imageList && recipe.imageList.length > 0) {
+            setImageSrc(recipe.imageList[0]);
+            } else {
+            fetchImage(recipe.recipeTitle.includes("recipe") ? recipe.recipeTitle : recipe.recipeTitle + ' recipe')
+                .then((url) => {
+                setImageSrc(url);
+                });
+            }
+      }, []);
+
+
+
+
 
     const deleteFunction = async (recipeId) => {
         setLoadingDeleteButton(true);

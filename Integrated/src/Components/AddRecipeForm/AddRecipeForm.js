@@ -109,6 +109,8 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
+
+        try{
         const fetchRecipes = async () => {
           
           const recipes = await getRecipes(USER_ID);
@@ -116,14 +118,22 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
           setTotalPages(Math.ceil(recipes.length / DISPLAY_ITEMS_PER_PAGE));
         }
         await fetchRecipes();
+        console.log(response + "successafter fetch");
         closeModal();
         setIsLoading(false);
         setError(false);
-      } else {
+      } catch (error) {
+        console.log(error , "error3");
+        setError(true);
+        setIsLoading(false);
+      }
+      }else {
+        console.log(response , "error1");
         setError(true);
         setIsLoading(false)
       }
     } catch (error) {
+      console.log(error , "error2");
       setError(true);
       setIsLoading(false)
     }

@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { AddRecipeForm } from "../AddRecipeForm/AddRecipeForm";
 import "./AddRecipeButton.css";
 
-export const AddRecipeButton = () => {
+export const AddRecipeButton = ({setRecipes, setTotalPages}) => {
   const [isOpen, setIsOpen] = useState();
   Modal.setAppElement("#root");
   const customStyles = {
@@ -35,7 +35,7 @@ export const AddRecipeButton = () => {
         contentLabel="Example Modal"
         style={customStyles}
       >
-        <AddRecipeForm closeModal={() => setIsOpen(false)} />
+        <AddRecipeForm closeModal={() => setIsOpen(false)} setRecipes={setRecipes} setTotalPages={setTotalPages}/>
       </Modal>
     </>
   );
