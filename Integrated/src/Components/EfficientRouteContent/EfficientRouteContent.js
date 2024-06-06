@@ -288,7 +288,7 @@ export const EfficientRouteContent = () => {
     /*ver noua netestata fara request */
     const fetchData_consumption = async () => {
         try {
-            const response = await fetch('http://localhost:9091/inventory/computeAvgConsumption', {
+            const response = await fetch('http://localhost:9091/inventory/infoItemRestock', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
