@@ -4,7 +4,7 @@ import TaskColumn from "../TaskColumn/TaskColumn";
 import "./MenuContent.css";
 import { v4 as uuidv4 } from 'uuid';
 import {fetchImage} from '../../pexelsApiFetch.js';
-import { count } from 'console';
+
 
 export const MenuContent = () => {
   const userId = 1;
@@ -70,6 +70,8 @@ export const MenuContent = () => {
       let roDay = day === 'monday' ? 'luni' : day === 'tuesday' ? 'marti' : day === 'wednesday' ? 'miercuri' : day === 'thursday' ? 'joi' : day === 'friday' ? 'vineri' : day === 'saturday' ? 'sambata' : 'duminica';
         for(const recipes of mealPlanObj[day]){
           const recipeDetails = await fetchRecipeDetails(recipes);
+          if(recipeDetails === null) continue;
+
           let imageSrc =  recipeDetails.imageList ? recipeDetails.imageList[0] : null;
           if(imageSrc === null){
             imageSrc = await fetchImage(recipeDetails.recipeTitle.includes("recipe") ? recipeDetails.recipeTitle : recipeDetails.recipeTitle + ' recipe');
@@ -203,6 +205,7 @@ export const MenuContent = () => {
                 }
                 const selectedId = availableIds.shift();
                 const recipeDetails = await fetchRecipeDetails(selectedId);
+                if (recipeDetails === null) continue;
                 newTasks.push({
                   id: uuidv4(),
                   task: recipeDetails.recipeTitle,
@@ -301,6 +304,7 @@ export const MenuContent = () => {
     try {
       for(const task of tasks){
         const recipeDetails = await fetchRecipeDetails(task.recipeId);
+        if(recipeDetails === null) continue;
         for(const ing of recipeDetails.ingredients){
           if(!ing.productId || !ing.quantity || !ing.quantity.value || !ing.productId.id)
             continue;
