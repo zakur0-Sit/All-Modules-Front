@@ -19,3 +19,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.user-recipes-container{
+    margin: 20px;
+}

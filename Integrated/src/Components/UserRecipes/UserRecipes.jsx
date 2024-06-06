@@ -6,6 +6,8 @@ import Spinner from "../Spinner/Spinner";
 import { AddRecipeButton } from "../AddReciepeButton/AddRecipeButton";
 import { DISPLAY_ITEMS_PER_PAGE, USER_ID } from "../../utils/utils";
 import { getRecipes } from "../services/recipe";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export const UserRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -36,6 +38,8 @@ export const UserRecipes = () => {
 
           
     return (
+        <>
+        <Header/>
         <div className="user-recipes-container">
             <h2 className="user-recipes-title" style={{marginLeft: '0px'}}>List of recipes</h2>
                 <div className="flex-space">
@@ -57,5 +61,7 @@ export const UserRecipes = () => {
                 </div>
             <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
+        <Footer/>
+        </>
     )
 }

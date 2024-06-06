@@ -16,8 +16,9 @@
 .page-button:hover{
     background-color: rgb(228, 227, 227);
 }
-.pagination-container{
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
+.pagination-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons inside the container */
+    margin: 0 auto; /* Centers the container itself horizontally */
+    /* Ensure it has a specified width or max-width if needed */
 }
