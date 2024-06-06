@@ -8,7 +8,6 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
   const [recipeData, setRecipeData] = useState({
     recipeTitle: '',
     description: '',
-    authorId: 1533,
     authorName: "John Doe",
     cookTime: '',
     prepTime: '',
@@ -85,7 +84,7 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
     setIsLoading(true);
     const printableIngredients = recipeData.ingredients.map((ingredient, index) => {
       const { name, quantity } = ingredient;
-      return `${quantity.value} 'g' of ${name}`;
+      return `${quantity.value} ${name}`;
     })
     let formData = { ...recipeData };
 
@@ -94,7 +93,6 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
       return acc;
     }, {});
 
-    formData.recipeId = Math.floor(Math.random() * 900000) + 100000;
     formData.printableIngredients = printableIngredients;
     formData.recipeYield = formData.recipeServings + "servings";
     formData.cookTime = "PT" + formData.cookTime + "M";
@@ -103,7 +101,7 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
     formData.instructionsList = instructionsList
 
     try {
-      const response = await fetch('http://localhost:5000/api/v1/recipes/addRecipe', {
+      const response = await fetch('http://localhost:9091/api/v1/recipes/addRecipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -111,6 +109,8 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
+
+        try{
         const fetchRecipes = async () => {
           
           const recipes = await getRecipes(USER_ID);
@@ -118,14 +118,22 @@ export const AddRecipeForm = ({ closeModal, setRecipes, setTotalPages }) => {
           setTotalPages(Math.ceil(recipes.length / DISPLAY_ITEMS_PER_PAGE));
         }
         await fetchRecipes();
+        console.log(response + "successafter fetch");
         closeModal();
         setIsLoading(false);
         setError(false);
-      } else {
+      } catch (error) {
+        console.log(error , "error3");
+        setError(true);
+        setIsLoading(false);
+      }
+      }else {
+        console.log(response , "error1");
         setError(true);
         setIsLoading(false)
       }
     } catch (error) {
+      console.log(error , "error2");
       setError(true);
       setIsLoading(false)
     }

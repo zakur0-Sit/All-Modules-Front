@@ -266,6 +266,7 @@ export const EfficientRouteContent = () => {
         } finally {
             setLoading(false);
         }
+        
     };
 
     useEffect(() => {
@@ -334,7 +335,7 @@ export const EfficientRouteContent = () => {
         } catch (error) {
             console.error('There has been a problem with your fetch operation:', error);
         } finally {
-            setLoading(false);
+           /* setLoading(false);*/
         }
     };
     useEffect(() => {
@@ -466,11 +467,14 @@ export const EfficientRouteContent = () => {
                 </div>
                 {loading && <LoadingIndicator />} {/* Show loading indicator */}
             </div>
-            <div className='titlu'>
+            
+            {stores.length > 0 && (
+                <div className="Store-container">
+                <div className='titlu'>
                 <h2> Store route order:  </h2>
             </div>
-            {stores.length > 0 && (
             <div className="store-container">
+
                 {stores.map(store => (
                     <div className="store-card" key={store.name}>
                         <div className='store-card-img'> 
@@ -496,6 +500,7 @@ export const EfficientRouteContent = () => {
                         </div>
                     </div>
                 ))}
+            </div>
             </div>
             )}
             <div id="detailsModal" className="route-modal">

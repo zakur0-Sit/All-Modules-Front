@@ -1,6 +1,7 @@
 export const getRecipes = async (userId) => {
     const response = await fetch(`http://localhost:9091/api/v1/recipes/getAllRecipesByUserId/` + userId);
     const recipes = await response.json();
+    console.log(recipes);
     return recipes;
 }
 
