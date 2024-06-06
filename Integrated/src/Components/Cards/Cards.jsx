@@ -10,6 +10,18 @@ function Cards({ recipe, handleLike, handleDislike }) {
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+    if(modalOpen === true)
+      fetch(`https://localhost:9091/api/v1/recipes/addView?recipeId=${recipe.recipeId}&userId=1`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Recipe viewed:', response);
+      });
   };
 
   const handleLikeClick = () => {
