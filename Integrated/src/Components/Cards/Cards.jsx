@@ -11,7 +11,7 @@ function Cards({ recipe, handleLike, handleDislike }) {
   const toggleModal = () => {
     setModalOpen(!modalOpen);
     if(modalOpen === true)
-      fetch(`https://localhost:9091/api/v1/recipes/addView?recipeId=${recipe.recipeId}&userId=1`, {
+      fetch(`http://localhost:9091/api/v1/recipes/addView?recipeId=${recipe.recipeId}&userId=1`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

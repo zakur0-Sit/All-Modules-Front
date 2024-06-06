@@ -129,7 +129,9 @@ body.modal-open {
 }
 
 .text-box-left ul {
-    list-style-position: inside;
+    list-style-type: disc;
+    padding-left: 30px;
+
 }
 
 

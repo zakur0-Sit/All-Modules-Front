@@ -58,7 +58,7 @@ export default function Modal({ recipe, toggleModal, img, AI }) {
                     <ul>
                         { recipe && recipe.printableIngredients && recipe.printableIngredients.map( ingredient => <li>{ingredient.replace(/"/g, '')}</li>) }
                         {
-                            recipe && !recipe.printableIngredients && recipe.ingredients && recipe.ingredients.map((ingredient, index) => 
+                            recipe && (!recipe.printableIngredients || recipe.printableIngredients.length === 0) && recipe.ingredients && recipe.ingredients.map((ingredient, index) => 
                                 <li key={index}>{ingredient['quantity']['value'] >= 1 ? String(ingredient['quantity']['value']) : ''} {String(ingredient['name'])}</li>)
                         }
                     </ul>
@@ -67,7 +67,7 @@ export default function Modal({ recipe, toggleModal, img, AI }) {
                      {/* Add your left text box here */}
                     <div className="text-box-right">
                     <h3>PREPARATION METHOD</h3>
-                    <div className="text-box-right">
+                    <div className="text-box-right-inside">
                         {recipe.instructionsList && Object.keys(recipe.instructionsList).length > 0 ? (
                             <ol>
                             {Object.values(recipe.instructionsList).map(instruction => <li key={instruction}>{instruction}</li>)}
