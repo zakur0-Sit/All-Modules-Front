@@ -16,6 +16,7 @@ import Shopping from './Components/Shopping/Shopping';
 import { EfficientRoute } from './Pages/EfficientRoute.jsx';
 import { Recipe } from './Pages/Recipe.jsx';
 import { Menu } from './Pages/Menu.jsx';
+import { UserRecipes } from './Components/UserRecipes/UserRecipes';
 import './App.css';
 
 export function App() {
@@ -39,6 +40,7 @@ export function App() {
           <Route path="/efficient-route" element={<EfficientRoute />} />
           <Route path="/recipe" element={<Recipe />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/user-recipes" element={<UserRecipes />} />
         </Routes>  
       </Router>    
     </HouseholdProvider>

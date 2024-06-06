@@ -113,6 +113,7 @@ export const Header = () => {
                         <Link to="/inventory">Inventory</Link>
                         <Link to="/chores">Chores</Link>
                         <Link to="/preferences">Preferences</Link>
+                        <Link to="/user-recipes">User Recipes</Link>
 
                         <div className="accountHideChores"><a href="/account"><Button text={"Account"}/></a></div>
                     </div>   

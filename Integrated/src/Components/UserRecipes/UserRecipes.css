@@ -1,0 +1,21 @@
+.user-recipes-container{
+    font-family: 'Poppins', sans-serif; 
+    
+}
+.user-recipes-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.user-recipes-title{
+    font-size: 30px;
+    font-weight: 200;
+    margin:10px;
+
+}
+
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

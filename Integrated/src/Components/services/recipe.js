@@ -1,11 +1,11 @@
 export const getRecipes = async (userId) => {
-    const response = await fetch('http://localhost:5000/api/v1/recipes/getAllRecipesByUserId/' + userId);
+    const response = await fetch(`http://localhost:9091/api/v1/recipes/getAllRecipesByUserId/` + userId);
     const recipes = await response.json();
     return recipes;
 }
 
 export const deleteRecipe = async (recipeId) => {
-    const URL = 'http://localhost:5000/api/v1/recipes/deleteRecipe/' + recipeId;
+    const URL = `http://localhost:9091/api/v1/recipes/deleteRecipe/` + recipeId;
     try {
         const response = await fetch(URL, {
             method: 'DELETE',
