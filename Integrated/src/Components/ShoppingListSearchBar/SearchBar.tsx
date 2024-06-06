@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
 import './SearchBar.css';
+import { useSearchParams } from 'react-router-dom';
 
 type Product = {
     id: number;
@@ -32,10 +32,24 @@ const SearchBar: React.FC<SearchProps> = ({
 }) => {
 
     const API_URL = 'http://localhost:9091/shopping';
-    const location = useLocation(); // Get location from react-router-dom
 
     const [filteredOptions, setFilteredOptions] = useState<Product[]>([]);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [preFilledProductName, setPreFilledProductName] = useState<string | null>(null);
+	const [searchParams] = useSearchParams();
+    const searchObject = Object.fromEntries(searchParams.entries());
+
+    useEffect(() => {
+        const fromNotification = searchObject['fromNotification'];
+        const productName = searchObject['productName'];
+      
+        if (fromNotification === 'true' && productName) {
+            setPreFilledProductName(productName);
+            if (setNewProduct) {
+                setNewProduct(productName);
+            }
+        }
+    }, [searchObject, setNewProduct]);
 
     const handleOptionClick = (id: number, option: string) => {
         console.log(option)
@@ -47,20 +61,6 @@ const SearchBar: React.FC<SearchProps> = ({
             setNewId(id);
         setShowDropdown(false);
     };
-    
-    useEffect(() => {
-        // Check if the URL contains the notification pattern
-        if (location.pathname === "/notification" && location.search) {
-            // Parse query parameters from the URL
-            const searchParams = new URLSearchParams(location.search);
-            const preFilledProductName = searchParams.get('productName');
-
-            // Set the pre-filled product name if it exists
-            if (preFilledProductName && setNewProduct) {
-                setNewProduct(preFilledProductName);
-            }
-        }
-    }, [location, setNewProduct]);
 
     const handleSearch = async (e: any) => {
         let listItems;
@@ -89,15 +89,15 @@ const SearchBar: React.FC<SearchProps> = ({
     return (
         <div className="searchContainerShopping">
             <input
-            autoFocus
-            type="text"
-            required
-            placeholder="Name"
-            value={newProduct} // Use newProduct directly
-            ref={inputRef}
-            onChange={(e) => { if (setNewProduct) setNewProduct(e.target.value) }}
+                autoFocus
+                ref={inputRef}
+                type='text'
+                placeholder='Add Product'
+                required
+                className="productNameShopping"
+                value={preFilledProductName || newProduct}
+                onChange={(e) => { handleSearch(e) }}
             />
-
             {showDropdown && (
                 <div className="contentSearchShopping">
                     <ul>
