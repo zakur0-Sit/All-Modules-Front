@@ -4,6 +4,7 @@ import TaskColumn from "../TaskColumn/TaskColumn";
 import "./MenuContent.css";
 import { v4 as uuidv4 } from 'uuid';
 import {fetchImage} from '../../pexelsApiFetch.js';
+import { count } from 'console';
 
 export const MenuContent = () => {
   const userId = 1;
@@ -142,13 +143,18 @@ export const MenuContent = () => {
     const fetchData = async () => {
       let data = null;
       try {
-        console.log('Fetching meal plan...');
-        const response = await fetch(`http://localhost:9091/api/v1/recipes/getMealPlan?householdId=${householdId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        var count = 0;
+        let response = {ok: false};
+
+        while(count < 5 && response.ok === false){//try 5 times
+          console.log('Fetching meal plan...');
+          response = await fetch(`http://localhost:9091/api/v1/recipes/getMealPlan?householdId=${householdId}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }); 
+        }
   
         if (response.ok) {
           data = await response.json();
@@ -179,7 +185,7 @@ export const MenuContent = () => {
             };
   
             let allIds = { breakfast: [], lunch: [], other: [] };
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 1; i++) {//DE 6 OIR??
               const ids = await fetchRecipeIds(i);
               allIds.breakfast.push(...ids.breakfast);
               allIds.lunch.push(...ids.lunch);
