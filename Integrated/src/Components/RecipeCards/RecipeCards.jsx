@@ -48,7 +48,7 @@ function RecipeCards() {
     try {
       const userId = 1; // Replace with actual user ID
       const response = await fetch(`http://localhost:9091/api/v1/recipes/removeLike?recipeId=${recipeId}&userId=${userId}`, {
-        method: 'POST',
+        method: 'DELETE',
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
