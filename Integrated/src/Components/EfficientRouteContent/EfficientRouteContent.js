@@ -9,7 +9,7 @@ const storeData = [
     {
         name: 'Auchan',
         imgSrc: "img/auchan.jpg",
-        address: 'nr. 5C, Palas Mall, Strada Palas, IaÈ™i 700051',
+        address: 'Palas Mall, Strada Palas 5C, Iasi 700051',
     },
     {
         name: 'Kaufland',
@@ -19,27 +19,27 @@ const storeData = [
     {
         name: 'Dedeman',
         imgSrc: "img/dedeman.jpg",
-        address: 'Bulevardul PrimÄƒverii nr. 2, IaÈ™i 700264',
+        address: 'Bulevardul Primaverii nr. 2, Iasi 700264',
     },
     {
         name: 'Lidl',
         imgSrc: "img/lidl.jpg",
-        address: 'Strada Pantelimon Halipa 3C, IaÈ™i 700612',
+        address: 'Strada Pantelimon Halipa 3C, Iasi 700612',
     },
     {
         name: 'Penny',
         imgSrc: "img/penny.jpg",
-        address: 'Strada Pantelimon Halipa 12A, IaÈ™i 700614',
+        address: 'Strada Pantelimon Halipa 12A, Iasi 700614',
     },
     {
         name: 'Mega',
         imgSrc: "img/mega.jpg",
-        address: 'Strada Cerna 1, IaÈ™i',
+        address: 'Strada Cerna 1, Iasi',
     },
     {
         name: 'Profi',
         imgSrc: "img/profi.jpg",
-        address: 'Bulevardul Nicolae Iorga nr. 236, IaÈ™i 700721',
+        address: 'Bulevardul Nicolae Iorga nr. 236, Iasi 700721',
     },
 ];
 
