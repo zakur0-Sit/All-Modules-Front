@@ -293,7 +293,7 @@ export const EfficientRouteContent = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(-1)
+                body: JSON.stringify(63)
             });
 
             if (!response.ok) {
